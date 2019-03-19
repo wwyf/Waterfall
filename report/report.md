@@ -48,8 +48,9 @@ TODO:
 
 ### 1.2 用例析取
 TODO:[zjh]
-1. use case，完成用例图，放在下面指定位置
-   1. ![](figure/usecase.png)
+1. use case(不太清楚具体怎么弄，搞了两个版本)
+    ![](figure/usecase_1.png)
+    ![](figure/usecase_2.png)
 
 ### 1.3 用例规约
 
