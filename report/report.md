@@ -48,7 +48,10 @@ TODO:
 
 ### 1.2 用例析取
 1. use case
-    ![](figure/usecase.png)
+
+    
+
+2. ![](figure/usecase.png)
     
 
 ### 1.3 用例规约
