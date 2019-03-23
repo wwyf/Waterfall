@@ -26,8 +26,7 @@ MiniProvider -up- (处理子订单)
 
 Client -up- (登录)
 Client -up- (提交母订单)
-Client -up- (查看母订单基本信息)
-Client -up- (查看母订单完成状态)
+Client -up- (查看母订单信息)
 
 together {
     Admin -- (登录)
@@ -35,8 +34,7 @@ together {
     Admin -- (管理用户)
     (管理用户) <|-- (审核微供应商) : <<extend>>
     (管理用户) <|-- (审核订购商) : <<extend>>
-    (监控订单) <|-- (查看母订单基本信息) : <<extend>>
-    (监控订单) <|-- (查看母订单完成状态) : <<extend>>
+    (监控订单) <|-- (查看母订单信息) : <<extend>>
     (监控订单) <|-- (查看子订单分派信息) : <<extend>>
 
     CreditSys -- (申请供应额度)
@@ -48,7 +46,7 @@ together {
 
 ''' 用于控制布局的连线, 不显示
 
-(提交母订单) -[hidden]right- (查看母订单完成状态)
+(提交母订单) -[hidden]right- (查看母订单信息)
 (生产资格认证) -[hidden]right- (绑定银行帐号)
 (绑定银行帐号) -[hidden]right- (申请供应额度)
 (申请供应额度) -[hidden]right- (查看派发子订单)

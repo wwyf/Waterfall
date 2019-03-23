@@ -1,6 +1,5 @@
 @startuml
 
-''' Layout
 start
 :输入需要虾的数量;
 :输入配送地点和配送方式;
