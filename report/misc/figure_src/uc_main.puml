@@ -1,0 +1,58 @@
+@startuml
+
+''' 布局信息
+left to right direction
+
+''' 以下部分描述了各个角色
+:微供应商: as MiniProvider
+:订购商: as Client
+:管理员: as Admin
+:授信系统: as CreditSys
+:资金系统: as FundSys
+
+''' 以下部分描述了各个用例
+''' 注意由于使用了从左到右布局, 故连线方向up down等需旋转90度
+
+MiniProvider -up- (登录)
+MiniProvider -up- (准入认证)
+MiniProvider -up- (申请供应额度)
+MiniProvider -up- (处理子订单)
+
+(生产资格认证) --|> (准入认证) : <<extend>>
+(绑定银行帐号) --|> (准入认证) : <<extend>>
+(查看派发子订单) --|> (处理子订单) : <<extend>>
+(提交完成子订单) --|> (处理子订单) : <<extend>>
+(取消子订单) --|> (处理子订单) : <<extend>>
+
+Client -up- (登录)
+Client -up- (提交母订单)
+Client -up- (查看母订单基本信息)
+Client -up- (查看母订单完成状态)
+
+together {
+    Admin -- (登录)
+    Admin -- (监控订单)
+    Admin -- (管理用户)
+    (管理用户) <|-- (审核微供应商) : <<extend>>
+    (管理用户) <|-- (审核订购商) : <<extend>>
+    (监控订单) <|-- (查看母订单基本信息) : <<extend>>
+    (监控订单) <|-- (查看母订单完成状态) : <<extend>>
+    (监控订单) <|-- (查看子订单分派信息) : <<extend>>
+
+    CreditSys -- (申请供应额度)
+    CreditSys -- (审核微供应商)
+    FundSys -- (取消子订单)
+    FundSys -- (提交完成子订单)
+    FundSys -- (绑定银行帐号)
+}
+
+''' 用于控制布局的连线, 不显示
+(提交母订单) -[hidden]right- (查看母订单信息)
+(查看母订单信息) -[hidden]right- (查看母订单完成状态)
+
+(生产资格认证) -[hidden]right- (绑定银行帐号)
+(绑定银行帐号) -[hidden]right- (申请供应额度)
+(申请供应额度) -[hidden]right- (查看派发子订单)
+(查看派发子订单) -[hidden]right- (提交完成子订单)
+(查看派发子订单) -[hidden]right- (取消子订单)
+@enduml
