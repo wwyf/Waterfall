@@ -47,9 +47,8 @@ together {
 }
 
 ''' 用于控制布局的连线, 不显示
-(提交母订单) -[hidden]right- (查看母订单信息)
-(查看母订单信息) -[hidden]right- (查看母订单完成状态)
 
+(提交母订单) -[hidden]right- (查看母订单完成状态)
 (生产资格认证) -[hidden]right- (绑定银行帐号)
 (绑定银行帐号) -[hidden]right- (申请供应额度)
 (申请供应额度) -[hidden]right- (查看派发子订单)
