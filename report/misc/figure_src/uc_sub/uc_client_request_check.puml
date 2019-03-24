@@ -1,0 +1,8 @@
+@startuml
+''' Layout
+start
+:请求用户输入验证信息;
+:将请求发送给平台;
+:平台将请求分派到活动管理员;
+stop
+@enduml

@@ -1,0 +1,13 @@
+@startuml
+''' Layout
+start
+:请求用户输入支付信息;
+:将请求发送给平台进行验证;
+if (支付信息合法?) then (是)
+    :保存支付信息到数据库;
+    :显示绑定成功;
+else (否)
+    :显示绑定失败;
+endif
+stop
+@enduml
