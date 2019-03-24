@@ -25,6 +25,7 @@ MiniProvider -up- (处理子订单)
 (取消子订单) --|> (处理子订单) : <<extend>>
 
 Client -up- (登录)
+Client -up- (购买资格认证)
 Client -up- (提交母订单)
 Client -up- (查看母订单信息)
 
