@@ -1,14 +1,13 @@
 ﻿\documentclass{sysuthesis}
 
 \input{docs/info}     % 论文相关信息
-% \input{docs/proposal}   % 开题报告内容
-\input{docs/abstract}     % 摘要内容
+% \input{docs/abstract}     % 摘要内容
 \begin{document}
     % 论文前置部分
     \frontmatter
         \pagenumbering{Roman}
         \maketitle    % 封面
-        \makeabstract       % 中英文摘要
+        % \makeabstract       % 中英文摘要
         \maketableofcontents        % 目录
         \makelistoffiguretable
 
@@ -16,18 +15,19 @@
     \mainmatter
         % 引言
 
-        % % 正文
-        % \include{docs/chap01}
-        % \newclearpage
-        % \include{docs/chap02}
-        % \newclearpage
-        % \include{docs/chap03}
-        % \newclearpage
-        % \include{docs/chap04}
-        % \newclearpage
-        % \include{docs/chap05}
-        % \newclearpage
-        % % 结语
+
+        % 正文
+        \include{docs/chap01}
+        \newclearpage
+        \include{docs/chap02}
+        \newclearpage
+        \include{docs/chap03}
+        \newclearpage
+        \include{docs/chap04}
+        \newclearpage
+        \include{docs/chap05}
+        \newclearpage
+        % 结语
 
     % 附录部分
     \backmatter

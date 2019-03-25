@@ -88,7 +88,7 @@
         CJKbookmarks=true,
         pdftitle={\@ctitle},
         pdfauthor={\@cauthor},
-        pdfkeywords={\@ckeywords},
+        % pdfkeywords={\@ckeywords},
         pdfcreator={LaTeX with hyperref package, using SYSU undergraduate Thesis LaTeX Template}
     }
 }
@@ -175,6 +175,8 @@
 \renewcommand{\cftaftertoctitle}{\hfill}
 \renewcommand{\cftafterlottitle}{\hfill}
 \renewcommand{\cftafterloftitle}{\hfill}
+% 控制目录标题与目录之间的距离
+\renewcommand{\cftaftertoctitleskip}{0pt}
 \renewcommand{\cftnodots}{\cftdotsep}     % 使用点指示页数
 
 \addtolength{\cftchapnumwidth}{3\ccwd}
