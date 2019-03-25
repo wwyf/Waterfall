@@ -1,0 +1,20 @@
+@startuml
+
+''' Layout
+start
+:输入用户名和密码;
+if (用户名是否存在) then (是)
+    if (用户是否被锁定) then (是)
+        :显示用户被锁定;
+    else (否)
+        if (密码正确) then (是)
+            :显示登录成功;
+        else (否)
+            :显示登录失败;
+        endif
+    endif
+else (否)
+    :显示登录失败;
+endif
+stop
+@enduml

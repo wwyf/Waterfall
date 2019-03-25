@@ -1,0 +1,24 @@
+@startuml
+
+start
+:输入需要虾的数量;
+:输入配送地点和配送方式;
+if (虾的数量在余量范围内?) then (是)
+    :显示总价格范围(含浮动区间)和需交付定金;
+
+    if (进入定金交付页面) then (是)
+        if (立即交付定金?) then (是)
+            :提交订单;
+        elseif (请求人工面谈?) then (是)
+            :提交订单;
+        else (否)
+            :取消订单;
+        endif
+    else (否)
+        :取消订单;
+    endif
+else (否)
+    :显示预订失败;
+endif
+stop
+@enduml
