@@ -49,7 +49,7 @@ TODO: 需要修改图片，去做申请额度
         %\begin{adjustwidth}{-1.5cm}{-1cm}
         \centering
         \includegraphics[width=12cm]{figure/usecase/uc_sub/uc_login.png}
-        \caption{登录事件流-活动图}
+        \caption{登录用例-活动图}
         \label{fig:logon-uml}
         %\end{adjustwidth}
     \end{figure}
@@ -58,9 +58,9 @@ TODO: 需要修改图片，去做申请额度
 \begin{enumerate}
 	\item \textbf{简要说明}  \\ 本用例描述订购商/微供应商/管理员如何登录到鲜天下平台。
 	\item \textbf{参与者} \\ 订购商、微供应商、管理员， 以下简称用户
-	\item \textbf{事件流}
+	\item \textbf{事件流} \\ 相应活动图可见\autoref{fig:logon-uml}。
 	\begin{enumerate} 
-        \item \textbf{基本事件流} \\ 本用例开始于用户希望登录到鲜天下平台，相应活动图可见\autoref{fig:logon-uml}。
+        \item \textbf{基本事件流} \\ 本用例开始于用户希望登录到鲜天下平台。
         \begin{enumerate}
             \item 系统请求用户输入用户名和密码。
             \item 用户输入用户名和密码。
@@ -86,7 +86,7 @@ TODO: 需要修改图片，去做申请额度
             \end{enumerate}
             \item 用户名对应的密码不正确。
             \begin{enumerate}
-                \item 系统显示错误信息 “用户名不存在或密码错误， 超过5次后锁定”
+                \item 系统显示错误信息 “用户名不存在或密码错误， 超过5次后锁定”。
                 \item 系统将用户错误的登录尝试次数 +1。
                 \item 检查登录尝试次数是否超过上限， 超过则锁定用户并发送通知短信。
                 \item 返回事件流第一步。
@@ -98,6 +98,85 @@ TODO: 需要修改图片，去做申请额度
     \item \textbf{后置条件} \\ 如果用例成功， 系统状态转换为登录态；若失败， 系统状态不改变。
 \end{enumerate}
 
+
+\subsection{提交母订单用例的用例规约}
+
+
+
+\begin{enumerate}
+	\item \textbf{简要说明}  \\ 本用例描述订购商如何向鲜天下平台提交新订单。
+	\item \textbf{参与者} \\ 订购商。
+	\item \textbf{事件流} \\ 相应活动图可见\autoref{fig:put-order-uml}。
+	\begin{enumerate} 
+        \item \textbf{基本事件流} \\ 本用例开始于处于登录态的订购商向鲜天下平台申请订购货物。
+        \begin{enumerate}
+            \item 用户输入需要虾的数量， 配送地点和配送方式。 \\ 
+            选择配送地点过程为：系统显示可选地点列表， 用户依次点选省， 市， 区， 系统显示的可选地点列表层级也从省，下降到是市，最后到区。 用户最后需手动输入街道地址。系统会在用户的输入面板上方列出用户使用的过往完整地址，
+            用户可以点击历史地址来一次性完成地址输入。 \\ 
+            选择配送方式为点选系统提供的几种可选配送方式之一，选择后配送方式其它选项变为不可选状态。
+            \item 系统检测用户的输入是否合法。
+            \begin{enumerate}
+                \item 客户请求的虾数量不在余量范围内。
+                \item 客户没有输入完整的地址。
+                \item 客户没有选择配送方式。
+            \end{enumerate}
+            \item 用户选择确认当前信息继续进行预约或取消交易。
+            \begin{enumerate}
+                \item 用户选择取消。
+            \end{enumerate}
+            \item 用户选择订金交付方式。 \\ 选项包括: 立即交付定金， 请求人工面谈.
+            \begin{itemize}
+                \item 若用户选择立即交付定金， 则转入支付页面， 填写支付信息(如稅号和公司抬头等)。
+                \item 若用户选择请求人工面谈， 则请求用户填写公司联系人信息并预约会谈时间。
+                \item 用户也可选择取消。
+            \end{itemize}
+            \item 预订结束, 订单被提交
+        \end{enumerate}
+        \item \textbf{后备事件流}
+        \begin{enumerate}
+            \item 客户请求的虾数量不在余量范围内。
+            \begin{enumerate}
+                \item 系统显示错误信息 “您申请的商品余量不足”。
+                \item 返回事件流第一步。
+            \end{enumerate}
+            \item 客户没有输入完整的地址。
+            \begin{enumerate}
+                \item 系统显示错误信息 “您没有输入完整的地址”。
+                \item 返回事件流第一步。
+            \end{enumerate}
+            \item 客户没有选择配送方式。
+            \begin{enumerate}
+                \item 系统显示错误信息 “您没有选择配送方式”。
+                \item 返回事件流第一步。
+            \end{enumerate}
+            \item 在确定信息或选择定金交付方式时，用户选择取消。
+            \begin{enumerate}
+                \item 返回事件流第一步。
+            \end{enumerate}
+        \end{enumerate}
+    \end{enumerate}
+    \item \textbf{特殊需求} \\ 无。
+    \item \textbf{前置条件} \\ 用例开始前, 用户需要处于已登录状态下, 并打开交易界面。
+    \item \textbf{后置条件} \\ 如果用例成功，用户提交的订单被保存为预订态或取消态，预订态的订单需保存在数据库中，取消态的订单直接丢弃，在接受到用户的定金转账后 (无论是立即交付定金/人工面谈后交付定金)，订单状态均切换为待完成态。
+\end{enumerate}
+
+
+
+%\usepackage{changepage}
+%\usepackage{rotating}
+%\usepackage{float}
+%\usepackage[section]{placeins}
+%\begin{sidewaystable}[!Htp]
+    \begin{figure}[htp]
+        %\begin{adjustwidth}{-1.5cm}{-1cm}
+        \centering
+        \includegraphics[width=0.7\textwidth]{figure/usecase/uc_sub/uc_client_submit_request.png}
+        \caption{提交母订单用例-活动图}
+        \label{fig:put-order-uml}
+        %\end{adjustwidth}
+    \end{figure}
+    
+    
 
 \section{补充规约}
 
