@@ -38,7 +38,65 @@ TODO: 需要修改图片，去做申请额度
 
 \section{用例规约}
 
+\subsection{登录用例的用例规约}
 
+%\usepackage{changepage}
+%\usepackage{rotating}
+%\usepackage{float}
+%\usepackage[section]{placeins}
+%\begin{sidewaystable}[!Htp]
+    \begin{figure}[htp]
+        %\begin{adjustwidth}{-1.5cm}{-1cm}
+        \centering
+        \includegraphics[width=12cm]{figure/usecase/uc_sub/uc_login.png}
+        \caption{登录事件流-活动图}
+        \label{fig:logon-uml}
+        %\end{adjustwidth}
+    \end{figure}
+    
+
+\begin{enumerate}
+	\item \textbf{简要说明}  \\ 本用例描述订购商/微供应商/管理员如何登录到鲜天下平台。
+	\item \textbf{参与者} \\ 订购商、微供应商、管理员， 以下简称用户
+	\item \textbf{事件流}
+	\begin{enumerate} 
+        \item \textbf{基本事件流} \\ 本用例开始于用户希望登录到鲜天下平台，相应活动图可见\autoref{fig:logon-uml}。
+        \begin{enumerate}
+            \item 系统请求用户输入用户名和密码。
+            \item 用户输入用户名和密码。
+            \item 系统验证用户输入的用户名和密码。
+            \begin{enumerate}
+                \item 用户名不存在。
+                \item 用户被锁定。
+                \item 用户名对应的密码不正确。
+            \end{enumerate}
+            \item 用户成功登录到主界面并进行其它操作。
+        \end{enumerate}
+        \item \textbf{后备事件流}
+        \begin{enumerate}
+            \item 用户名不存在。
+            \begin{enumerate}
+                \item 系统显示错误信息 “用户名不存在或密码错误, 超过5次后锁定”。
+                \item 返回事件流第一步。
+            \end{enumerate}
+            \item 用户被锁定。
+            \begin{enumerate}
+                \item 系统显示错误信息 “用户被锁定, 请联系客服申诉处理”。
+                \item 返回事件流第一步。
+            \end{enumerate}
+            \item 用户名对应的密码不正确。
+            \begin{enumerate}
+                \item 系统显示错误信息 “用户名不存在或密码错误， 超过5次后锁定”
+                \item 系统将用户错误的登录尝试次数 +1。
+                \item 检查登录尝试次数是否超过上限， 超过则锁定用户并发送通知短信。
+                \item 返回事件流第一步。
+            \end{enumerate}
+        \end{enumerate}
+    \end{enumerate}
+    \item \textbf{特殊需求} \\ 密码输入框必须以密文方式呈现。
+    \item \textbf{前置条件} \\ 用例开始前， 用户需要打开对应的系统登录界面， 且用户处于未登录状态。
+    \item \textbf{后置条件} \\ 如果用例成功， 系统状态转换为登录态；若失败， 系统状态不改变。
+\end{enumerate}
 
 
 \section{补充规约}
