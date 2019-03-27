@@ -51,6 +51,26 @@
 \RequirePackage{datetime}
 \RequirePackage{nth}
 
+
+
+\def\equationautorefname{式}%
+\def\footnoteautorefname{脚注}%
+\def\itemautorefname{项}%
+\def\figureautorefname{图}%
+\def\tableautorefname{表}%
+\def\partautorefname{篇}%
+\def\appendixautorefname{附录}%
+\def\chapterautorefname{章}%
+\def\sectionautorefname{节}%
+\def\subsectionautorefname{小小节}%
+\def\subsubsectionautorefname{subsubsection}%
+\def\paragraphautorefname{段落}%
+\def\subparagraphautorefname{子段落}%
+\def\FancyVerbLineautorefname{行}%
+\def\theoremautorefname{定理}%
+
+
+
 % 引入调整段落整体宽度的宏包
 \RequirePackage{changepage}
 
@@ -88,7 +108,7 @@
         CJKbookmarks=true,
         pdftitle={\@ctitle},
         pdfauthor={\@cauthor},
-        pdfkeywords={\@ckeywords},
+        % pdfkeywords={\@ckeywords},
         pdfcreator={LaTeX with hyperref package, using SYSU undergraduate Thesis LaTeX Template}
     }
 }
@@ -175,6 +195,8 @@
 \renewcommand{\cftaftertoctitle}{\hfill}
 \renewcommand{\cftafterlottitle}{\hfill}
 \renewcommand{\cftafterloftitle}{\hfill}
+% 控制目录标题与目录之间的距离
+\renewcommand{\cftaftertoctitleskip}{0pt}
 \renewcommand{\cftnodots}{\cftdotsep}     % 使用点指示页数
 
 \addtolength{\cftchapnumwidth}{3\ccwd}
@@ -230,29 +252,38 @@
             \includegraphics[width=10cm]{image/SYSULogo} \\
             \songti
             \vspace{\baselineskip}
-            \zihao{-0}\textbf{本科生毕业论文（设计）} \\
-            \zihao{2}\textbf{\textrm{Undergraduate Graduation Thesis（Design）}} \\
-            \vspace{2\baselineskip}
+            \fontsize{45}{35}\textbf{“鲜\ 天\ 下”} \\
+            \zihao{1}\textbf{\textrm{系\ 统\ 分\ 析\ 与\ 设\ 计}} \\
+            \vspace{2.5\baselineskip}
 
-            {\fontsize{15}{10}\selectfont
+            {\fontsize{12}{10}\selectfont
             \begin{tabular}{l}
-                    \makebox[2.7cm]{题目 Title:\hfill} \underline{\makebox[8.3cm]{\hfill\zihao{3}\songti\textbf\@covertitlefirst\hfill}}\\\vspace{1pt}\\
-                    \makebox[2.7cm]{\hfill} \underline{\makebox[8.3cm]{\hfill\zihao{3}\songti\textbf\@covertitlesecond\hfill}}\\\vspace{1pt}\\
-                    \vspace{8pt} \\
+                    % \makebox[2.7cm]{题目 Title:\hfill} \underline{\makebox[8.3cm]{\hfill\zihao{3}\songti\textbf\@covertitlefirst\hfill}}\\\vspace{1pt}\\
+                    % \makebox[2.7cm]{\hfill} \underline{\makebox[8.3cm]{\hfill\zihao{3}\songti\textbf\@covertitlesecond\hfill}}\\\vspace{1pt}\\
+                    % \vspace{8pt} \\
                     院\hspace{0.5\ccwd}系\\
-                    \makebox[4.8cm]{School (Department):\hfill} \underline{\makebox[6.2cm]{\hfill\@cschool\hfill}}\\
-                    \vspace{8pt} \\
+                    \makebox[4.8cm]{School (Department):\hfill} \underline{\makebox[5.2cm]{\hfill\@cschool\hfill}}\\
+                    \vspace{3pt} \\
                     专\hspace{0.5\ccwd}业\\
-                    \makebox[1.7cm]{Major:\hfill} \underline{\makebox[9.3cm]{\hfill\@cmajor\hfill}}\\
-                    \vspace{8pt} \\
-                    学生姓名 \\
-                    \makebox[3.4cm]{Student Name:\hfill} \underline{\makebox[7.6cm]{\hfill\@cauthor\hfill}}\\
-                    \vspace{8pt} \\
-                    学\hspace{0.5\ccwd}号 \\
-                    \makebox[3cm]{Student No.:\hfill} \underline{\makebox[8cm]{\hfill\@studentid\hfill}}\\
-                    \vspace{8pt} \\
+                    \makebox[1.7cm]{Major:\hfill} \underline{\makebox[8.3cm]{\hfill\@cmajor\hfill}}\\
+                    \vspace{3pt} \\
+                    组员姓名与学号 \\
+                    \makebox[5cm]{Group Member Name:\hfill} \underline{\makebox[5cm]{\hfill\ 王永锋\ 16337237 \hfill}}\\
+                    \vspace{3pt} \\
+                    组员姓名与学号 \\
+                    \makebox[5cm]{Group Member Name:\hfill} \underline{\makebox[5cm]{\hfill\ 李沐晗\ 16313018 \hfill}}\\
+                    \vspace{3pt} \\
+                    组员姓名与学号 \\
+                    \makebox[5cm]{Group Member Name:\hfill} \underline{\makebox[5cm]{\hfill\ 何冠岚\ 16337076 \hfill}}\\
+                    \vspace{3pt} \\
+                    组员姓名与学号 \\
+                    \makebox[5cm]{Group Member Name:\hfill} \underline{\makebox[5cm]{\hfill\ 张家豪\ 16337303 \hfill}}\\
+                    \vspace{3pt} \\
+                    组员姓名与学号 \\
+                    \makebox[5cm]{Group Member Name:\hfill} \underline{\makebox[5cm]{\hfill\ 颜彬\ 16337269 \hfill}}\\
+                    \vspace{3pt} \\
                     指导教师（职 称） \\
-                    \makebox[4cm]{Supervisor (Title):\hfill} \underline{\makebox[7cm]{\hfill\@cmentor\hspace{2.7cm}}}
+                    \makebox[4cm]{Supervisor (Title):\hfill} \underline{\makebox[6cm]{\hfill\@cmentor\hspace{2.7cm}}}
             \end{tabular}
             }
             \vfill
