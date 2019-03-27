@@ -252,38 +252,38 @@
             \includegraphics[width=10cm]{image/SYSULogo} \\
             \songti
             \vspace{\baselineskip}
-            \zihao{-0}\textbf{“鲜天下”平台} \\
-            \zihao{2}\textbf{\textrm{系统分析与设计方案}} \\
-            \vspace{1\baselineskip}
+            \fontsize{45}{35}\textbf{“鲜\ 天\ 下”} \\
+            \zihao{1}\textbf{\textrm{系\ 统\ 分\ 析\ 与\ 设\ 计}} \\
+            \vspace{2.5\baselineskip}
 
-            {\fontsize{15}{10}\selectfont
+            {\fontsize{12}{10}\selectfont
             \begin{tabular}{l}
                     % \makebox[2.7cm]{题目 Title:\hfill} \underline{\makebox[8.3cm]{\hfill\zihao{3}\songti\textbf\@covertitlefirst\hfill}}\\\vspace{1pt}\\
                     % \makebox[2.7cm]{\hfill} \underline{\makebox[8.3cm]{\hfill\zihao{3}\songti\textbf\@covertitlesecond\hfill}}\\\vspace{1pt}\\
                     % \vspace{8pt} \\
                     院\hspace{0.5\ccwd}系\\
-                    \makebox[4.8cm]{School (Department):\hfill} \underline{\makebox[6.2cm]{\hfill\@cschool\hfill}}\\
-                    \vspace{6pt} \\
+                    \makebox[4.8cm]{School (Department):\hfill} \underline{\makebox[5.2cm]{\hfill\@cschool\hfill}}\\
+                    \vspace{3pt} \\
                     专\hspace{0.5\ccwd}业\\
-                    \makebox[1.7cm]{Major:\hfill} \underline{\makebox[9.3cm]{\hfill\@cmajor\hfill}}\\
-                    \vspace{6pt} \\
-                    组员姓名 \\
-                    \makebox[5cm]{Group Member Name:\hfill} \underline{\makebox[6cm]{\hfill\ 王永锋 \hfill}}\\
-                    \vspace{6pt} \\
-                    组员姓名 \\
-                    \makebox[5cm]{Group Member Name:\hfill} \underline{\makebox[6cm]{\hfill\ 李沐晗 \hfill}}\\
-                    \vspace{6pt} \\
-                    组员姓名 \\
-                    \makebox[5cm]{Group Member Name:\hfill} \underline{\makebox[6cm]{\hfill\ 何冠岚 \hfill}}\\
-                    \vspace{6pt} \\
-                    组员姓名 \\
-                    \makebox[5cm]{Group Member Name:\hfill} \underline{\makebox[6cm]{\hfill\ 张家豪 \hfill}}\\
-                    \vspace{6pt} \\
-                    组员姓名 \\
-                    \makebox[5cm]{Group Member Name:\hfill} \underline{\makebox[6cm]{\hfill\ 颜彬 \hfill}}\\
-                    \vspace{6pt} \\
+                    \makebox[1.7cm]{Major:\hfill} \underline{\makebox[8.3cm]{\hfill\@cmajor\hfill}}\\
+                    \vspace{3pt} \\
+                    组员姓名与学号 \\
+                    \makebox[5cm]{Group Member Name:\hfill} \underline{\makebox[5cm]{\hfill\ 王永锋\ 16337237 \hfill}}\\
+                    \vspace{3pt} \\
+                    组员姓名与学号 \\
+                    \makebox[5cm]{Group Member Name:\hfill} \underline{\makebox[5cm]{\hfill\ 李沐晗\ 16313018 \hfill}}\\
+                    \vspace{3pt} \\
+                    组员姓名与学号 \\
+                    \makebox[5cm]{Group Member Name:\hfill} \underline{\makebox[5cm]{\hfill\ 何冠岚\ 16337076 \hfill}}\\
+                    \vspace{3pt} \\
+                    组员姓名与学号 \\
+                    \makebox[5cm]{Group Member Name:\hfill} \underline{\makebox[5cm]{\hfill\ 张家豪\ 16337303 \hfill}}\\
+                    \vspace{3pt} \\
+                    组员姓名与学号 \\
+                    \makebox[5cm]{Group Member Name:\hfill} \underline{\makebox[5cm]{\hfill\ 颜彬\ 16337269 \hfill}}\\
+                    \vspace{3pt} \\
                     指导教师（职 称） \\
-                    \makebox[4cm]{Supervisor (Title):\hfill} \underline{\makebox[7cm]{\hfill\@cmentor\hspace{2.7cm}}}
+                    \makebox[4cm]{Supervisor (Title):\hfill} \underline{\makebox[6cm]{\hfill\@cmentor\hspace{2.7cm}}}
             \end{tabular}
             }
             \vfill
