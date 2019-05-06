@@ -1,3 +1,47 @@
 {
+<<<<<<< HEAD
     "javascript.implicitProjectConfig.experimentalDecorators": true
+=======
+    "latex-workshop.latex.tools": [
+    {
+      "command": "xelatex",
+      "args": [
+        "-synctex=1",
+        "-shell-escape",
+        "-file-line-error",
+        "%DOC%"
+      ],
+      "name": "xelatex"
+    },
+    {
+      "command": "bibtex",
+      "args": [
+        "%DOCFILE%"
+      ],
+      "name": "bibtex"
+    },
+    {
+      "name": "pdflatex",
+      "command": "pdflatex",
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "%DOC%"
+      ]
+    },
+  ],
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "toolchain",
+      "tools": [
+        "xelatex"
+        // "xelatex",
+        // "bibtex",
+        // "xelatex",
+      ]
+    }
+  ]
+
+>>>>>>> 8aba980539aa1ef7d11a8c380791fce156f0e8e8
 }
