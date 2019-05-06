@@ -1,4 +1,7 @@
 {
+<<<<<<< HEAD
+    "javascript.implicitProjectConfig.experimentalDecorators": true
+=======
     "latex-workshop.latex.tools": [
     {
       "command": "xelatex",
@@ -40,4 +43,5 @@
     }
   ]
 
+>>>>>>> 8aba980539aa1ef7d11a8c380791fce156f0e8e8
 }
