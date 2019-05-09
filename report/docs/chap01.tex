@@ -4,6 +4,7 @@
 \label{cha:demand_analysis}
 \section{问题陈述}
 
+TODO: 问题陈述需要重写，因为没有贷款系统了
 
 我们分析并实现一个连接微供应商和订购商之间的一个中间平台“鲜天下”。通过该平台，我们得以实现这样的目标：聚合小生厂商的生产力以满足大厂家的订单需求，规模化效应减少运行成本，通过可靠的授信模型为小生厂商提供合适额度的贷款以解决成本问题。
 % TODO ：社会背景
@@ -19,8 +20,7 @@
 
 \section{用例析取}
 
-% TODO: 需要修改图片，去做申请额度
-% TODO: 简化
+TODO: 简化用例图，适当减少功能，用例图需要重做一个
 
 对“鲜天下”平台，我们完成了用例图，图示见\autoref{fig:usecase-main}。
 
@@ -40,6 +40,10 @@
 
 
 \section{用例规约}
+
+\subsection{注册用例的用例规约}
+
+TODO: 编写注册用例的用例规约  by wyf
 
 \subsection{登录用例的用例规约}
 
@@ -100,6 +104,99 @@
     \item \textbf{前置条件} \\ 用例开始前， 用户需要打开对应的系统登录界面， 且用户处于未登录状态。
     \item \textbf{后置条件} \\ 如果用例成功， 系统状态转换为登录态；若失败， 系统状态不改变。
 \end{enumerate}
+
+
+\subsection{采购商提交母订单用例的用例规约}
+
+TODO: 采购商提交母订单用例的用例规约 by jh
+
+\subsection{采购商查看母订单用例的用例规约}
+
+TODO: 采购商查看母订单用例的用例规约 by jh
+
+\subsection{微供应商查看子订单用例的用例规约}
+
+TODO: 微供应商查看子订单用例的用例规约 by jh
+
+\subsection{微供应商提交子订单用例的用例规约}
+
+TODO: 微供应商提交子订单用例的用例规约 by jh
+
+\subsection{后台审核订购商用例的用例规约}
+
+TODO: 后台审核订购商用例的用例规约 by wyf
+
+\subsection{后台审核微供应商用例的用例规约}
+
+TODO: 后台审核微供应商用例的用例规约  by wyf
+
+\subsection{后台查看运营情况用例的用例规约}
+
+TODO: 后台查看运营情况用例的用例规约  by wyf
+
+\subsection{后台删除订单用例的用例规约}
+
+TODO: 后台删除订单用例的用例规约  by wyf
+
+
+
+\section{"鲜天下"实现补充规约}
+    补充规约列出了不便于在用例模型的用例中获取的系统需求。补充规约用例模型一起记录关于系统的一整套需求。
+
+
+\subsection{范围}
+    \begin{enumerate}
+
+        \item 本补充规约适用于"鲜天下"系统，将要由学习面向对象软件分析与设计的学生开发。
+        \item 本规约除定义了在许多用例中所共有的功能性需求以外，还定义了系统的非功能性需求，例如：可靠性、可用性、性能和可支持性等。
+
+    \end{enumerate}
+
+\subsection{功能}
+    \begin{enumerate}
+        \item 平台能够在管理员进行订单处理时给出可行方案、方便管理员进行订单的拆分和分派。
+        \item 供应商在提交订单后违约需要支付支付违约金，接收到订单的微供应商也需要得到补充。
+        \item 微生产商注册时将提供生产力相关信息，并默认无条件接受平台的分派，否则注册时应在相关信息填写好所能接受的供货范围与供货量。
+    \end{enumerate}
+
+
+\subsection{可靠性}
+
+    "鲜天下"交易平台应该在每周七天，每天二十四小时内都应是可以使用的。宕机的时间应少于 5\%。配备有2名维护人员，轮流提供维护服务。
+
+
+\subsection{性能}
+    \begin{enumerate}
+        \item 通过CDN服务使得服务器的平均响应时间不能超过1秒。
+    \end{enumerate}
+
+\subsection{安全性}
+    \begin{enumerate}
+        \item 通过后端用户输入过滤来防范XSS攻击。
+        \item 服务端配置完善的跨域规则，同时利用后端框架提供的CSRF\_TOKEN防范CSRF攻击。
+        \item 全站采用HTTPS、密码等不对称加密方式加密后传输防范中间人攻击。
+        \item 采用后端框架提供的参数化查询来避免SQL注入攻击。
+    \end{enumerate}
+
+\section{术语表}
+
+\begin{table}[h] %voc table result
+	\centering
+        \label{tab:glossary}
+        \caption{“鲜天下”-术语表}
+		\begin{tabular}{*{4}{c}}
+			\toprule
+	 		编号 & 术语 & 含义 & 备注\\
+            \midrule
+            1 & 微供应商 & 生产虾的微小供应商, 为平台上实际货物的生产者 \\
+            2 & 订购商 & 购买虾的订购商, 为平台上实际货物的购买者 \\
+            3 & 平台 & 连接微供应商和订购商的桥梁, 负责订单派发, 资金分派, 物流等功能\\
+			\bottomrule
+		\end{tabular}
+\end{table}
+
+\begin{comment}
+    
 
 
 \subsection{提交母订单用例的用例规约}
@@ -219,9 +316,6 @@
     
 
 \subsection{查看子订单分派信息用例的用例规约}
-
-% TODO: wyf
-
 
 
 
@@ -727,59 +821,4 @@
     \end{figure}
 
 
-\section{"鲜天下"实现补充规约}
-    补充规约列出了不便于在用例模型的用例中获取的系统需求。补充规约用例模型一起记录关于系统的一整套需求。
-
-
-\subsection{范围}
-    \begin{enumerate}
-
-        \item 本补充规约适用于"鲜天下"系统，将要由学习面向对象软件分析与设计的学生开发。
-        \item 本规约除定义了在许多用例中所共有的功能性需求以外，还定义了系统的非功能性需求，例如：可靠性、可用性、性能和可支持性等。
-
-    \end{enumerate}
-
-\subsection{功能}
-    \begin{enumerate}
-        \item 平台能够在管理员进行订单处理时给出可行方案、方便管理员进行订单的拆分和分派。
-        \item 供应商在提交订单后违约需要支付支付违约金，接收到订单的微供应商也需要得到补充。
-        \item 微生产商注册时将提供生产力相关信息，并默认无条件接受平台的分派，否则注册时应在相关信息填写好所能接受的供货范围与供货量。
-    \end{enumerate}
-
-
-\subsection{可靠性}
-
-    "鲜天下"交易平台应该在每周七天，每天二十四小时内都应是可以使用的。宕机的时间应少于 5\%。配备有2名维护人员，轮流提供维护服务。
-
-
-\subsection{性能}
-    \begin{enumerate}
-        \item 通过CDN服务使得服务器的平均响应时间不能超过1秒。
-    \end{enumerate}
-
-\subsection{安全性}
-    \begin{enumerate}
-        \item 通过后端用户输入过滤来防范XSS攻击。
-        \item 服务端配置完善的跨域规则，同时利用后端框架提供的CSRF\_TOKEN防范CSRF攻击。
-        \item 全站采用HTTPS、密码等不对称加密方式加密后传输防范中间人攻击。
-        \item 采用后端框架提供的参数化查询来避免SQL注入攻击。
-    \end{enumerate}
-
-\section{术语表}
-
-\begin{table}[h] %voc table result
-	\centering
-        \label{tab:glossary}
-        \caption{“鲜天下”-术语表}
-		\begin{tabular}{*{4}{c}}
-			\toprule
-	 		编号 & 术语 & 含义 & 备注\\
-            \midrule
-            1 & 微供应商 & 生产虾的微小供应商, 为平台上实际货物的生产者 \\
-            2 & 订购商 & 购买虾的订购商, 为平台上实际货物的购买者 \\
-            3 & 平台 & 连接微供应商和订购商的桥梁, 负责订单派发, 资金分派, 物流等功能\\
-			\bottomrule
-		\end{tabular}
-\end{table}
-
- 
+\end{comment}
