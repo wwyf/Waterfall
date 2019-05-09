@@ -124,11 +124,97 @@ TODO: 微供应商提交子订单用例的用例规约 by jh
 
 \subsection{后台审核订购商用例的用例规约}
 
-TODO: 后台审核订购商用例的用例规约 by wyf
+\begin{enumerate}
+	\item \textbf{简要说明}  \\ 本用例描述管理员如何审核订购商的资质。
+	\item \textbf{参与者} \\ 管理员。
+	\item \textbf{事件流} \\ 相应活动图可见\autoref{fig:shenhe-order-uml}。
+	\begin{enumerate} 
+        \item \textbf{基本事件流} \\ 本用例开始于处于登录态的管理员选择对向鲜天下请求待检查的订购商队列进行审核。
+        \begin{enumerate}
+            \item 系统读取待检查的订购商队列，并向管理员说明是否存在需要审核的订购商。
+            \item 如果存在需要审核的订购商，则系统显示当前未经审核的订购商列表，供管理员进行选择。
+            \item 管理员选择其中一个订购商，系统显示该订购商的详细信息。
+            \begin{enumerate}
+                \item 系统将会以表单的形式，向管理员展示订购商为了注册而填写的表单，同时会有按钮，由管理员选择是否审核通过。
+            \end{enumerate}
+            \item 由管理员决定该审核是否通过。
+            \begin{enumerate}
+                \item 若管理员同意通过，则将订购商帐号标记为验证通过， 同时向订购商填写的邮件地址发送验证成功邮件。
+                \item 若管理员否决， 则将订购商帐号标记为验证不通过， 同时向订购商填写的邮件地址发送验证失败邮件。
+            \end{enumerate}
+            \item 从队列中移除订购商请求, 回到第一步。
+        \end{enumerate}
+    \end{enumerate}
+    \item \textbf{特殊需求} \\ 无。
+    \item \textbf{前置条件} \\ 用例开始前, 管理员需要处于已登录状态下, 并打开待审核订购商信息界面。
+    \item \textbf{后置条件} \\ 无论如何，都需要将该审核请求从系统中去掉。并且，如果某订购商审核通过，与该订购商相关的状态将被更新到数据库中。
+\end{enumerate}
+
+
+
+%\usepackage{changepage}
+%\usepackage{rotating}
+%\usepackage{float}
+%\usepackage[section]{placeins}
+%\begin{sidewaystable}[!Htp]
+\begin{figure}[htp]
+    %\begin{adjustwidth}{-1.5cm}{-1cm}
+    \centering
+    \includegraphics[width=0.4\textwidth]{figure/usecase/uc_sub/uc_admin_check_client.png}
+    \caption{后台审核订购商用例-活动图}
+    \label{fig:shenhe-order-uml}
+    %\end{adjustwidth}
+\end{figure}
+TODO ： 后台审核订购商用例-活动图
+
+
 
 \subsection{后台审核微供应商用例的用例规约}
 
-TODO: 后台审核微供应商用例的用例规约  by wyf
+
+\begin{enumerate}
+	\item \textbf{简要说明}  \\ 本用例描述管理员如何审核微供应商的资质。
+	\item \textbf{参与者} \\ 管理员。
+	\item \textbf{事件流} \\ 相应活动图可见\autoref{fig:shenhe-order-uml}。
+	\begin{enumerate} 
+        \item \textbf{基本事件流} \\ 本用例开始于处于登录态的管理员选择对向鲜天下请求待检查的微供应商队列进行审核。
+        \begin{enumerate}
+            \item 系统读取待检查的微供应商队列，并向管理员说明是否存在需要审核的微供应商。
+            \item 如果存在需要审核的微供应商，则系统显示当前未经审核的微供应商列表，供管理员进行选择。
+            \item 管理员选择其中一个微供应商，系统显示该微供应商的详细信息。
+            \begin{enumerate}
+                \item 系统将会以表单的形式，向管理员展示微供应商为了注册而填写的表单，同时会有按钮，由管理员选择是否审核通过。
+            \end{enumerate}
+            \item 由管理员决定该审核是否通过。
+            \begin{enumerate}
+                \item 若管理员同意通过，则将微供应商帐号标记为验证通过， 同时向微供应商填写的邮件地址发送验证成功邮件。
+                \item 若管理员否决， 则将微供应商帐号标记为验证不通过， 同时向微供应商填写的邮件地址发送验证失败邮件。
+            \end{enumerate}
+            \item 从队列中移除微供应商请求, 回到第一步。
+        \end{enumerate}
+    \end{enumerate}
+    \item \textbf{特殊需求} \\ 无。
+    \item \textbf{前置条件} \\ 用例开始前, 管理员需要处于已登录状态下, 并打开待审核微供应商信息界面。
+    \item \textbf{后置条件} \\ 无论如何，都需要将该审核请求从系统中去掉。并且，如果某微供应商审核通过，与该微供应商相关的状态将被更新到数据库中。
+\end{enumerate}
+
+
+
+%\usepackage{changepage}
+%\usepackage{rotating}
+%\usepackage{float}
+%\usepackage[section]{placeins}
+%\begin{sidewaystable}[!Htp]
+\begin{figure}[htp]
+    %\begin{adjustwidth}{-1.5cm}{-1cm}
+    \centering
+    \includegraphics[width=0.4\textwidth]{figure/usecase/uc_sub/uc_admin_check_client.png}
+    \caption{后台审核微供应商用例-活动图}
+    \label{fig:shenhe-order-uml}
+    %\end{adjustwidth}
+\end{figure}
+TODO ： 后台审核微供应商-活动图
+
 
 \subsection{后台查看运营情况用例的用例规约}
 
