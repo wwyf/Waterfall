@@ -4,9 +4,10 @@
 \label{cha:demand_analysis}
 \section{问题陈述}
 
-% TODO: 问题陈述需要重写，因为没有贷款系统了
+TODO: 问题陈述需要重写，因为没有贷款系统了
 
 我们分析并实现一个连接微供应商和订购商之间的一个中间平台“鲜天下”。通过该平台，我们得以实现这样的目标：聚合小生厂商的生产力以满足大厂家的订单需求，规模化效应减少运行成本，通过可靠的授信模型为小生厂商提供合适额度的贷款以解决成本问题。
+% TODO ：社会背景
 
 在订购商对虾有较大的需求时，通过“鲜天下”平台，订购商能够在该平台发起订单并支付定金，并实时查看该订单的提交情况与完成情况，如果订单被平台所接受并完成，订购商需要向平台支付剩余款项。
 
@@ -42,7 +43,7 @@ TODO: 简化用例图，适当减少功能，用例图需要重做一个
 
 \subsection{注册用例的用例规约}
 
-% TODO: 编写注册用例的用例规约  by wyf
+TODO: 编写注册用例的用例规约  by wyf
 
 \subsection{登录用例的用例规约}
 
@@ -106,8 +107,6 @@ TODO: 简化用例图，适当减少功能，用例图需要重做一个
 
 
 \subsection{采购商提交母订单用例的用例规约}
-
-% TODO: 采购商提交母订单用例的用例规约 by jh
 \begin{enumerate}
     \item \textbf{简要说明}  \\ 本用例允许采购商向"鲜天下"平台提交母订单。在完成了注册并通过审核后，采购商可以登陆"鲜天下"平台，然后向"鲜天下"平台提交生成母订单请求。
     \item \textbf{参与者} \\ 采购商。
@@ -175,16 +174,15 @@ TODO: 简化用例图，适当减少功能，用例图需要重做一个
     \label{fig:put-mon-order-uml}
     %\end{adjustwidth}
 \end{figure}
+    
 
 
 
-\subsection{采购商查看母订单用例的用例规约}
-
-% TODO: 采购商查看母订单用例的用例规约 by jh
+\subsection{查看母订单用例的用例规约}
 \begin{enumerate}
     \item \textbf{简要说明}  \\ 本用例允许采购商查看与他相关的母订单信息，同时也允许管理员查看指定母订单的信息。
     \item \textbf{参与者} \\ 采购商、管理员。
-    \item \textbf{事件流} \\ 相应活动图可见\autoref{fig:uc_order_query-uml}。
+    \item \textbf{事件流} \\ 相应活动图可见\autoref{fig:put-order-uml}。
     \begin{enumerate} 
         \item \textbf{基本事件流} \\ 本用例开始于采购商或管理员处于登陆界面并且在"鲜天下"平台点击查看母订单请求的按钮。
         \begin{enumerate}
@@ -213,24 +211,18 @@ TODO: 简化用例图，适当减少功能，用例图需要重做一个
 \begin{figure}[htp]
     %\begin{adjustwidth}{-1.5cm}{-1cm}
     \centering
-    \includegraphics[width=4cm]{image/chap01/uc_order_query.png}
-    \caption{采购商查看母订单用例-活动图}
-    \label{fig:uc_order_query-uml}
+    \includegraphics[width=12cm]{image/chap01/uc_client_submit_request.png}
+    \caption{采购商提交母订单用例-活动图}
+    \label{fig:put-order-uml}
     %\end{adjustwidth}
 \end{figure}
 
 
-\subsection{微供应商查看可加入母订单的用例规约}
-
-% TODO: {微供应商查看可加入母订单的用例规约 by wyf
-
-\subsection{微供应商查看子订单用例的用例规约}
-
-% TODO: 微供应商查看子订单用例的用例规约 by jh
+\subsection{查看子订单用例的用例规约}
 \begin{enumerate}
     \item \textbf{简要说明}  \\ 本用例允许微供应商查看"鲜天下"平台为他分派的所有子订单信息，同时也允许管理员查看指定的订单信息。
     \item \textbf{参与者} \\ 微供应商、管理员。
-    \item \textbf{事件流} \\ 相应活动图可见\autoref{fig:uc_suborder_query}。
+    \item \textbf{事件流} \\ 相应活动图可见\autoref{fig:put-order-uml}。
     \begin{enumerate} 
         \item \textbf{基本事件流} \\ 本用例开始于采购商或管理员处于登陆界面并且在"鲜天下"平台点击查看母订单请求的按钮。
         \begin{enumerate}
@@ -256,23 +248,11 @@ TODO: 简化用例图，适当减少功能，用例图需要重做一个
     \item \textbf{后置条件} \\ 无。
 \end{enumerate}
 
-\begin{figure}[htp]
-    %\begin{adjustwidth}{-1.5cm}{-1cm}
-    \centering
-    \includegraphics[width=4cm]{image/chap01/uc_suborder_query.png}
-    \caption{微供应商查看子订单用例-活动图}
-    \label{fig:uc_suborder_query}
-    %\end{adjustwidth}
-\end{figure}
-
-
 \subsection{微供应商提交子订单用例的用例规约}
-
-% TODO: 微供应商提交子订单用例的用例规约 by jh
 \begin{enumerate}
     \item \textbf{简要说明}  \\ 本用例允许微供应商向"鲜天下"平台提交用于更新订单完成进度的请求。
     \item \textbf{参与者} \\ 微供应商。
-    \item \textbf{事件流} \\ 相应活动图可见\autoref{fig:uc_order_commit}。
+    \item \textbf{事件流} \\ 相应活动图可见\autoref{fig:put-order-uml}。
     \begin{enumerate} 
         \item \textbf{基本事件流} \\ 本用例开始于供应商登录到"鲜天下"平台，并点击发起母订单。
         \begin{enumerate}
@@ -325,78 +305,25 @@ TODO: 简化用例图，适当减少功能，用例图需要重做一个
     \item \textbf{后置条件} \\ 在数据库中暂存母订单信息，状态为"待审核"状态。经过管理员的进一步审核后，如果订单通过审核，则将订单状态从"待审核状态"改为"待执行"状态，使得订单能够被分派出去成为"执行中"状态；如果订单没有通过审核，在审核后将订单状态改为"未通过审核"状态，并在一个月后将订单丢弃。人工面谈后交付定金)，订单状态均切换为待完成态。
 \end{enumerate}
 
-\begin{figure}[htp]
-    %\begin{adjustwidth}{-1.5cm}{-1cm}
-    \centering
-    \includegraphics[width=4cm]{image/chap01/uc_order_commit.png}
-    \caption{微供应商提交子订单用例-活动图}
-    \label{fig:uc_order_commit}
-    %\end{adjustwidth}
-\end{figure}
+\subsection{后台审核订购商用例的用例规约}
+
+TODO: 后台审核订购商用例的用例规约 by wyf
+
+\subsection{后台审核微供应商用例的用例规约}
+
+TODO: 后台审核微供应商用例的用例规约  by wyf
+
+\subsection{后台查看运营情况用例的用例规约}
+
+TODO: 后台查看运营情况用例的用例规约  by wyf
+
+\subsection{后台删除订单用例的用例规约}
+
+TODO: 后台删除订单用例的用例规约  by wyf
 
 
-\subsection{管理员审核新用户用例的用例规约}
-
-% TODO: 后台审核新用户用例的用例规约 by wyf
-
-\begin{enumerate}
-	\item \textbf{简要说明}  \\ 本用例描述管理员如何审核订购商的资质。
-	\item \textbf{参与者} \\ 管理员。
-	\item \textbf{事件流} \\ 相应活动图可见\autoref{fig:shenhe-order-uml}。
-	\begin{enumerate} 
-        \item \textbf{基本事件流} \\ 本用例开始于处于登录态的管理员选择对向鲜天下请求待检查的订购商队列进行审核。
-        \begin{enumerate}
-            \item 系统读取待检查的订购商队列，并向管理员说明是否存在需要审核的订购商。
-            \item 如果存在需要审核的订购商，则系统显示当前未经审核的订购商列表，供管理员进行选择。
-            \item 管理员选择其中一个订购商，系统显示该订购商的详细信息。
-            \begin{enumerate}
-                \item 系统将会以表单的形式，向管理员展示订购商为了注册而填写的表单，同时会有按钮，由管理员选择是否审核通过。
-            \end{enumerate}
-            \item 由管理员决定该审核是否通过。
-            \begin{enumerate}
-                \item 若管理员同意通过，则将订购商帐号标记为验证通过， 同时向订购商填写的邮件地址发送验证成功邮件。
-                \item 若管理员否决， 则将订购商帐号标记为验证不通过， 同时向订购商填写的邮件地址发送验证失败邮件。
-            \end{enumerate}
-            \item 从队列中移除订购商请求, 回到第一步。
-        \end{enumerate}
-    \end{enumerate}
-    \item \textbf{特殊需求} \\ 无。
-    \item \textbf{前置条件} \\ 用例开始前, 管理员需要处于已登录状态下, 并打开待审核订购商信息界面。
-    \item \textbf{后置条件} \\ 无论如何，都需要将该审核请求从系统中去掉。并且，如果某订购商审核通过，与该订购商相关的状态将被更新到数据库中。
-\end{enumerate}
-
-
-
-%\usepackage{changepage}
-%\usepackage{rotating}
-%\usepackage{float}
-%\usepackage[section]{placeins}
-%\begin{sidewaystable}[!Htp]
-\begin{figure}[htp]
-    %\begin{adjustwidth}{-1.5cm}{-1cm}
-    \centering
-    \includegraphics[width=0.4\textwidth]{figure/usecase/uc_sub/uc_admin_check_client.png}
-    \caption{后台审核订购商用例-活动图}
-    \label{fig:shenhe-order-uml}
-    %\end{adjustwidth}
-\end{figure}
-
-\subsection{管理员查看所有订单用例的用例规约}
-
-% TODO: 管理员查看所有订单用例的用例规约 by wyf
-
-\subsection{管理员用户管理用例的用例规约}
-
-% TODO: 管理员用户管理用例的用例规约  by wyf
-
-\subsection{管理员订单管理用例的用例规约}
-
-% TODO:管理员订单管理用例的用例规约  by wyf
 
 \section{"鲜天下"实现补充规约}
-
-% TODO: 等其他部分写完了，再回来继续水水这里
-
     补充规约列出了不便于在用例模型的用例中获取的系统需求。补充规约用例模型一起记录关于系统的一整套需求。
 
 
@@ -534,6 +461,7 @@ TODO: 简化用例图，适当减少功能，用例图需要重做一个
     
 \subsection{查看母订单信息用例的用例规约}
 
+% TODO: wyf
 
 
 \begin{enumerate}
@@ -610,6 +538,7 @@ TODO: 简化用例图，适当减少功能，用例图需要重做一个
 
 \subsection{审核订购商用例的用例规约}
 
+% TODO: tl
 
 
 \begin{enumerate}
@@ -654,6 +583,7 @@ TODO: 简化用例图，适当减少功能，用例图需要重做一个
 
 \subsection{审核微供应商的用例规约}
 
+% TODO: tl
 
 
 
@@ -697,6 +627,8 @@ TODO: 简化用例图，适当减少功能，用例图需要重做一个
 
 
 \subsection{生产资格认证用例的用例规约}
+
+% TODO: tl
 
 
 
@@ -752,6 +684,7 @@ TODO: 简化用例图，适当减少功能，用例图需要重做一个
 
 \subsection{购买资格认证用例的用例规约}
 
+% TODO: 填写增加生产力
 
 
 
@@ -808,6 +741,7 @@ TODO: 简化用例图，适当减少功能，用例图需要重做一个
 
 \subsection{绑定银行账号用例的用例规约}
 
+% TODO: tl
 
 
 
@@ -863,6 +797,8 @@ TODO: 简化用例图，适当减少功能，用例图需要重做一个
 
 
 \subsection{申请供应额度用例的用例规约}
+
+% TODO: wyf
 
 
 
@@ -933,6 +869,7 @@ TODO: 简化用例图，适当减少功能，用例图需要重做一个
 
 \subsection{查看派发子订单用例的用例规约}
 
+% TODO: tl
 
 
 \begin{enumerate}
@@ -1019,6 +956,8 @@ TODO: 简化用例图，适当减少功能，用例图需要重做一个
 
 
 \subsection{提交完成子订单用例的用例规约}
+
+% TODO: tl
 
 
 
