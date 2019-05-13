@@ -1,3 +1,6 @@
 [submodule "frontend"]
 	path = frontend
 	url = https://github.com/YanB25/Waterfall-frontend.git
+[submodule "backend"]
+	path = backend
+	url = https://github.com/wwyf/Waterfall-backend.git
