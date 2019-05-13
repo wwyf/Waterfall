@@ -60,7 +60,7 @@ version: v1
                     }
                   } 
     /logout:
-      get:
+      post:
         description: 登出
         responses: 
           200:
@@ -84,7 +84,12 @@ version: v1
                   {
                     "code" : 0,
                     "data" : {
-                      
+                    "username" : wyf,
+                    "email" : w.y.ff@163.com,
+                    "phone" : 13838383838,
+                    "balance" : 23,
+                    "role" : 0,
+                    "status" : 0,
                     }
                   } 
       post:
@@ -94,8 +99,16 @@ version: v1
             description: 用户名
           password:
             description: 密码
+          email:
+            description: 邮箱
+          phone:
+            description: 手机号码
+          balance:
+            description: 余额
           role:
             description: 用户身份
+          status:
+            description: 用户状态
         responses: 
           200:
             body: 
@@ -119,16 +132,108 @@ version: v1
                   {
                     "code" : 0,
                     "data" : {
-                    "orders": []
+                    "orders": [
+                    {
+                      "mainOrderId" : 1231,
+                      "order_name" : "{订单名字}",
+                      "create_date" : "2019-11-11 11:11:11",
+                      "order_ddl" : "2019-11-11 11:11:11",
+                      "quantity" : 11,
+                      "price" : 2,
+                      "total_price" : 22,
+                      "userID" : 12413434,
+                      "order_status" : 0,
+                      "order_progress" : 95
+                    }
+                    ]
                     }
                   } 
       post:
         description: 添加新的订单
+        queryParameters: 
+          order_name: 
+            description: 订单名称
+          order_summary :
+            description: 订单概述
+          order_ddl:
+            description : 订单截止日期
+          address:
+            description: 订单收货地址
+          quantity :
+            description: 货物数量
+          price :
+            description: 订单单价
+          comments :
+            description: 订单备注
+          phone :
+            description: 联系方式
+        responses: 
+          200:
+            body: 
+              application/json:
+                example: |
+                  {
+                    "code" : 0,
+                    "data" : {
+                    "msg" : "{是否提交成功}"
+                    }
+                  } 
       /{mainOrderId}:
         get:
           description: 获取指定主订单信息
+          responses: 
+            200:
+              body: 
+                application/json:
+                  example: |
+                    {
+                      "code" : 0,
+                      "data" : {
+                      "order_name" : "{订单名字}",
+                      "order_summary" : "{订单信息文字概要}",
+                      "create_date" : "2019-11-11 11:11:11",
+                      "order_ddl" : "2019-11-11 11:11:11",
+                      "address" : "{填写地址}",
+                      "quantity" : 11,
+                      "price" : 2,
+                      "total_price" : 22,
+                      "comments" : "{填写一些备注}",
+                      "userID" : 12413434,
+                      "phone" : 13538383838,
+                      "order_status" : 0,
+                      "order_progress" : 95
+                      }
+                    }
         post:
           description: 编辑指定主订单信息
+          queryParameters: 
+            order_name:
+              description: 订单名字
+            order_summary:
+              description: 订单概要
+            order_ddl:
+              description: 订单截止日期
+            address:
+              description: 收货地址
+            price:
+              description: 货物单价
+            total_price:
+              description: 订单总价
+            comments:
+              description: 订单备注
+            phone:
+              description: 联系电话
+          responses: 
+            200:
+              body: 
+                application/json:
+                  example: |
+                    {
+                      "code" : 0,
+                      "data" : {
+                      "msg" : "{是否变更成功}"
+                      }
+                    } 
         /finish:
           post:
             description: 订单确认收货
@@ -160,13 +265,72 @@ version: v1
     /subOrder:
       get:
         description: 获取所有子订单
+        responses: 
+          200:
+            body: 
+              application/json:
+                example: |
+                  {
+                    "code" : 0,
+                    "data" : {
+                    "orders": [
+                    {
+                      "mainOrderId" : 1231,
+                      "subOrderId" : 123,
+                      "create_date" : "2019-11-11 11:11:11",
+                      "quantity" : 11,
+                      "price" : 2,
+                      "total_price" : 22,
+                      "comments" : "{填写一些备注}",
+                      "userID" : 12413434,
+                      "order_status" : 0,
+                    }
+                    ]
+                    }
+                  } 
       post:
         description: 添加新的子订单
       /{subOrderId}:
         get:
           description: 获取指定子订单信息
+          responses: 
+            200:
+              body: 
+                application/json:
+                  example: |
+                    {
+                      "code" : 0,
+                      "data" : {
+                      "mainOrderId" : 111,
+                      "create_date" : "2019-11-11 11:11:11",
+                      "quantity" : 11,
+                      "price" : 2,
+                      "total_price" : 22,
+                      "comments" : "{填写一些备注}",
+                      "userID" : 12413434,
+                      "order_status" : 0,
+                      }
+                    }
         post:
           description: 编辑指定子订单信息
+          queryParameters: 
+            price:
+              description: 货物单价
+            total_price:
+              description: 订单总价
+            comments:
+              description: 订单备注
+          responses: 
+            200:
+              body: 
+                application/json:
+                  example: |
+                    {
+                      "code" : 0,
+                      "data" : {
+                      "msg" : "{是否变更成功}"
+                      }
+                    } 
         /finish:
           post:
             description: 订单完成/确认发货
@@ -199,10 +363,49 @@ version: v1
     /{userId}:
       get:
         description: 获取指定用户钱包余额
+        responses: 
+          200:
+            body: 
+              application/json:
+                example: |
+                  {
+                    "code" : 0,
+                    "data" : {
+                    "balance" : 1111,
+                    }
+                  } 
       /deposit:
         post:
           description: 充值接口
+          queryParameters: 
+            amount:
+              description: 充值金额  
+          responses: 
+            200:
+              body: 
+                application/json:
+                  example: |
+                    {
+                      "code" : 0,
+                      "data" : {
+                      "msg" : "{是否操作成功}"
+                      }
+                    } 
       /withdraw:
         post:
           description: 提现接口
+          queryParameters: 
+            amount:
+              description: 提现金额  
+          responses: 
+            200:
+              body: 
+                application/json:
+                  example: |
+                    {
+                      "code" : 0,
+                      "data" : {
+                      "msg" : "{是否操作成功}"
+                      }
+                    } 
   
