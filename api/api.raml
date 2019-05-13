@@ -17,7 +17,8 @@ version: v1
                   {
                     "code" : 0,
                     "data" : {
-                    "msg" : "{是否已经登录}"
+                      "msg" : "{是否已经登录}",
+                      "userid" : "{userid}"
                     }
                   } 
       post:
@@ -35,7 +36,8 @@ version: v1
                   {
                     "code" : 0,
                     "data" : {
-                    "msg" : "{是否登录成功}"
+                      "msg" : "{是否登录成功}",
+                      "userid" : "{userid}"
                     }
                   } 
     /register:
@@ -48,6 +50,7 @@ version: v1
             description: 密码
           role:
             description: 用户身份
+            enum: ["provider", "customer", "manager"]
         responses: 
           200:
             body: 
@@ -56,7 +59,8 @@ version: v1
                   {
                     "code" : 0,
                     "data" : {
-                    "msg" : "{是否注册成功}"
+                      "msg" : "{是否注册成功}",
+                      "userid" : "{userid}"
                     }
                   } 
     /logout:
@@ -70,7 +74,8 @@ version: v1
                   {
                     "code" : 0,
                     "data" : {
-                    "msg" : "{是否登出成功}"
+                      "msg" : "{是否登出成功}",
+                      "userid" : "{userid}"
                     }
                   } 
     /{userId}:
@@ -97,18 +102,25 @@ version: v1
         queryParameters: 
           username:
             description: 用户名
+            required: false
           password:
             description: 密码
+            required: false
           email:
             description: 邮箱
+            required: false
           phone:
             description: 手机号码
+            required: false
           balance:
             description: 余额
+            required: false
           role:
             description: 用户身份
+            required: false
           status:
             description: 用户状态
+            required: false
         responses: 
           200:
             body: 
@@ -124,6 +136,12 @@ version: v1
     /mainOrder:
       get:
         description: 获取所有主订单
+        queryParameters: 
+          limit:
+            description: "获取前limit个订单，如果不传入limit则limit默认为10，limit为-1代表获取所有订单"
+            type: integer
+            required: false
+            
         responses: 
           200:
             body: 
@@ -175,7 +193,8 @@ version: v1
                   {
                     "code" : 0,
                     "data" : {
-                    "msg" : "{是否提交成功}"
+                    "msg" : "{是否提交成功}",
+                    "id" : "{mainOrderId}"
                     }
                   } 
       /{mainOrderId}:
@@ -265,6 +284,10 @@ version: v1
     /subOrder:
       get:
         description: 获取所有子订单
+        queryParameters: 
+          limit:
+            description: “获取的子订单的数目，如果没有提供limit则limit默认为10，如果获取所有子订单则limit为-1”
+            type: integer
         responses: 
           200:
             body: 
@@ -273,23 +296,49 @@ version: v1
                   {
                     "code" : 0,
                     "data" : {
-                    "orders": [
-                    {
-                      "mainOrderId" : 1231,
-                      "subOrderId" : 123,
-                      "create_date" : "2019-11-11 11:11:11",
-                      "quantity" : 11,
-                      "price" : 2,
-                      "total_price" : 22,
-                      "comments" : "{填写一些备注}",
-                      "userID" : 12413434,
-                      "order_status" : 0,
-                    }
-                    ]
+                      "orders": [
+                        {
+                          "mainOrderId" : 1231,
+                          "subOrderId" : 123,
+                          "create_date" : "2019-11-11 11:11:11",
+                          "quantity" : 11,
+                          "price" : 2,
+                          "total_price" : 22,
+                          "comments" : "{填写一些备注}",
+                          "userID" : 12413434,
+                          "order_status" : 0
+                        }
+                      ]
                     }
                   } 
       post:
         description: 添加新的子订单
+        queryParameters: 
+          mainOrderId:
+            description: "对应的mainOrderId"
+            type: integer
+          price:
+            description: 货物单价
+            type: number
+          quantity:
+            description: 子订单提供的数量
+            type: number
+          comments:
+            description: 订单备注
+          phone:
+            description: 联系电话
+        responses: 
+          200:
+            body: 
+              application/json:
+                example: |
+                  {
+                    "code" : 0,
+                    "data" : {
+                      "msg" : "{是否变更成功}",
+                      "id" : "{subOrderId}"
+                    }
+                  } 
       /{subOrderId}:
         get:
           description: 获取指定子订单信息
@@ -301,14 +350,14 @@ version: v1
                     {
                       "code" : 0,
                       "data" : {
-                      "mainOrderId" : 111,
-                      "create_date" : "2019-11-11 11:11:11",
-                      "quantity" : 11,
-                      "price" : 2,
-                      "total_price" : 22,
-                      "comments" : "{填写一些备注}",
-                      "userID" : 12413434,
-                      "order_status" : 0,
+                        "mainOrderId" : 111,
+                        "create_date" : "2019-11-11 11:11:11",
+                        "quantity" : 11,
+                        "price" : 2,
+                        "total_price" : 22,
+                        "comments" : "{填写一些备注}",
+                        "userID" : 12413434,
+                        "order_status" : 0
                       }
                     }
         post:
@@ -379,7 +428,8 @@ version: v1
           description: 充值接口
           queryParameters: 
             amount:
-              description: 充值金额  
+              description: 充值金额
+              type: number
           responses: 
             200:
               body: 
@@ -396,7 +446,8 @@ version: v1
           description: 提现接口
           queryParameters: 
             amount:
-              description: 提现金额  
+              description: 提现金额
+              type: number 
           responses: 
             200:
               body: 

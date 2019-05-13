@@ -1,0 +1,24 @@
+{
+  "name": "waterfall",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "api-designer": "./node_modules/api-designer/bin/api-designer.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wwyf/Waterfall.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wwyf/Waterfall/issues"
+  },
+  "homepage": "https://github.com/wwyf/Waterfall#readme",
+  "devDependencies": {
+    "api-designer": "^0.4.1",
+    "request": "^2.88.0"
+  }
+}
