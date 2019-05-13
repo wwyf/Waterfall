@@ -1,0 +1,208 @@
+#%RAML 1.0
+---
+title: WaterFall API
+baseUri: http://localhost/{version}
+version: v1
+
+/apis:
+  /user:
+    /login:
+      get:
+        description: 获取登录状态
+        responses: 
+          200:
+            body: 
+              application/json:
+                example: |
+                  {
+                    "code" : 0,
+                    "data" : {
+                    "msg" : "{是否已经登录}"
+                    }
+                  } 
+      post:
+        description: 检查登录信息并完成登录
+        queryParameters: 
+          username:
+            description: 用户名
+          password:
+            description: 密码
+        responses: 
+          200:
+            body: 
+              application/json:
+                example: |
+                  {
+                    "code" : 0,
+                    "data" : {
+                    "msg" : "{是否登录成功}"
+                    }
+                  } 
+    /register:
+      post:
+        description: 注册新用户
+        queryParameters: 
+          username:
+            description: 用户名
+          password:
+            description: 密码
+          role:
+            description: 用户身份
+        responses: 
+          200:
+            body: 
+              application/json:
+                example: |
+                  {
+                    "code" : 0,
+                    "data" : {
+                    "msg" : "{是否注册成功}"
+                    }
+                  } 
+    /logout:
+      get:
+        description: 登出
+        responses: 
+          200:
+            body: 
+              application/json:
+                example: |
+                  {
+                    "code" : 0,
+                    "data" : {
+                    "msg" : "{是否登出成功}"
+                    }
+                  } 
+    /{userId}:
+      get:
+        description: 获取指定用户信息
+        responses: 
+          200:
+            body: 
+              application/json:
+                example: |
+                  {
+                    "code" : 0,
+                    "data" : {
+                      
+                    }
+                  } 
+      post:
+        description: 变更用户信息
+        queryParameters: 
+          username:
+            description: 用户名
+          password:
+            description: 密码
+          role:
+            description: 用户身份
+        responses: 
+          200:
+            body: 
+              application/json:
+                example: |
+                  {
+                    "code" : 0,
+                    "data" : {
+                    "msg" : "{是否变更成功}"
+                    }
+                  } 
+  /order:
+    /mainOrder:
+      get:
+        description: 获取所有主订单
+        responses: 
+          200:
+            body: 
+              application/json:
+                example: |
+                  {
+                    "code" : 0,
+                    "data" : {
+                    "orders": []
+                    }
+                  } 
+      post:
+        description: 添加新的订单
+      /{mainOrderId}:
+        get:
+          description: 获取指定主订单信息
+        post:
+          description: 编辑指定主订单信息
+        /finish:
+          post:
+            description: 订单确认收货
+            responses: 
+              200:
+                body: 
+                  application/json:
+                    example: |
+                      {
+                        "code" : 0,
+                        "data" : {
+                        "msg" : "{是否操作成功}"
+                        }
+                      } 
+        /cancel:
+          post:
+            description: 取消订单
+            responses: 
+              200:
+                body: 
+                  application/json:
+                    example: |
+                      {
+                        "code" : 0,
+                        "data" : {
+                        "msg" : "{是否操作成功}"
+                        }
+                      } 
+    /subOrder:
+      get:
+        description: 获取所有子订单
+      post:
+        description: 添加新的子订单
+      /{subOrderId}:
+        get:
+          description: 获取指定子订单信息
+        post:
+          description: 编辑指定子订单信息
+        /finish:
+          post:
+            description: 订单完成/确认发货
+            responses: 
+              200:
+                body: 
+                  application/json:
+                    example: |
+                      {
+                        "code" : 0,
+                        "data" : {
+                        "msg" : "{是否操作成功}"
+                        }
+                      } 
+        /cancel:
+          post:
+            description: 取消订单
+            responses: 
+              200:
+                body: 
+                  application/json:
+                    example: |
+                      {
+                        "code" : 0,
+                        "data" : {
+                        "msg" : "{是否操作成功}"
+                        }
+                      } 
+  /wallet:
+    /{userId}:
+      get:
+        description: 获取指定用户钱包余额
+      /deposit:
+        post:
+          description: 充值接口
+      /withdraw:
+        post:
+          description: 提现接口
+  
