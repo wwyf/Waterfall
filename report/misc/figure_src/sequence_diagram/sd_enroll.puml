@@ -1,0 +1,20 @@
+@startuml
+''' 省略底部
+	hide footbox 
+
+''' 定义类
+	actor User as act
+	boundary EnrollInterface as bou
+	control EnrollController as con
+	database UserList as db
+
+	autonumber
+	act -> bou : fillEnrollInfo()
+	bou -> con : isInfoValid()
+	con -> db : query()
+	db -> con : returnTrue
+	con -> con : apply()
+	con -> bou : enrollResult()
+	bou -> bou : display()
+
+@enduml
