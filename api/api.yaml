@@ -474,11 +474,11 @@ components:
             - 0
             - 1
             - 2
-        progress:
-          title: 订单进度
-          type: integer
-          maximum: 100
-          minimum   : 0
+        # progress:
+        #   title: 订单进度
+        #   type: integer
+        #   maximum: 100
+        #   minimum   : 0
     subOrders:
       properties:
         ID:
@@ -546,11 +546,10 @@ components:
           description: 单件货物价格
           type: integer
           example : 534
-        progress:
-          title: 订单进度
+        current_supply:
+          title: 该母订单对应的所有子订单的供应量总和
           type: integer
-          maximum: 100
-          minimum   : 0
+          example: 11
         quantity:
           description: 母订单所需货物数量
           type: integer
