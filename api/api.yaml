@@ -86,6 +86,14 @@ paths:
                   type: string
                   description: 密码
                   example: 123456
+                email:
+                  type: string
+                  description: 用户电子邮箱
+                  example: klfsl@163.com
+                phone:
+                  type: string
+                  description: 用户手机号码
+                  example: 13538383838
                 role:
                   type: string
                   description: 用户身份
@@ -115,7 +123,7 @@ paths:
     post:
       tags: 
         - 用户相关
-      summary: 登出
+      summary: 登出(TODO)
       description: 登出
       responses:
         200:
@@ -141,7 +149,7 @@ paths:
     get:
       tags: 
         - 用户相关
-      summary: 获取指定用户信息
+      summary: 获取指定用户信息(TODO)
       description: 获取指定用户信息
       responses:
         200:
@@ -187,7 +195,7 @@ paths:
     post:
       tags: 
         - 用户相关
-      summary: 变更用户信息
+      summary: 变更用户信息(TODO)
       description: 变更用户信息
       requestBody:
         content:
