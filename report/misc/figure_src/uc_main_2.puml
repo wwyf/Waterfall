@@ -24,6 +24,7 @@ Client -up- (发布母订单)
 Client -up- (查看母订单)
 
 together {
+	Admin -- (用户查询)
     Admin -- (用户登录)
     Admin -- (查看子订单)
     Admin -- (查看母订单)

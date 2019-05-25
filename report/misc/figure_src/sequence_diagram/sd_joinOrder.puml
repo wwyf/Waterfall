@@ -3,27 +3,27 @@
 	hide footbox 
 
 ''' 定义类
-	actor User as act
+	actor Provider as act
 	boundary ProviderInterface as bou
 	control ProviderController as con
-	database UserList as db
+	database OrderList as db
 
 	autonumber
-	act -> bou : enrollEvent()
+	act -> bou : joinEvent()
+
 	activate bou
+	bou -> con : join()
 
-	bou -> con : enroll()
 	activate con
-
 	con -> db : insert()
+
 	activate db
-
 	db --> con : returnResult
+
 	deactivate db
-
 	con --> bou : returnResult
-	deactivate con
 
+	deactivate con
 	bou -> bou : display()
 
 @enduml
