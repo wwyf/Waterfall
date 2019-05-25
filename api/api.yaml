@@ -9,7 +9,7 @@ servers:
     description: Production server
 paths:
   # /apis:
-  /apis/user/login:
+  /apis/user:
     get:
       tags: 
         - 用户相关
