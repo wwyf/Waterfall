@@ -9,7 +9,64 @@ servers:
     description: Production server
 paths:
   # /apis:
-  # /apis/user:
+  /apis/user/login:
+    get:
+      tags: 
+        - 用户相关
+      summary: 获取登陆状态
+      description: 获取登陆状态
+      responses:
+        200:
+          description: 成功获取并返回登陆状态
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    type: object
+                    properties:
+                      msg:
+                        type: string
+                        example: "已经登陆"
+                      userid:
+                        type: integer
+                        example: 2
+    post:
+      tags: 
+        - 用户相关
+      summary: 检查登录信息并完成登录
+      description: 检查登录信息并完成登录
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                username:
+                  type: string
+                  example: wyf
+                password:
+                  type: string
+                  example: 123456
+      responses:
+        200:
+          description: 登陆成功
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    type: object
+                    properties:
+                      msg:
+                        type: string
+                        example: "登陆成功"
+                      userid:
+                        type: integer
+                        example: 2
   # /apis/user/login:
   # /apis/user/register:
   # /apis/user/logout:
