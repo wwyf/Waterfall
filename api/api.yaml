@@ -85,7 +85,7 @@ paths:
                 password:
                   type: string
                   description: 密码
-                  example: 123456
+                  example: "123456"
                 email:
                   type: string
                   description: 用户电子邮箱
@@ -93,7 +93,7 @@ paths:
                 phone:
                   type: string
                   description: 用户手机号码
-                  example: 13538383838
+                  example: "13538383838"
                 role:
                   type: string
                   description: 用户身份
@@ -174,7 +174,7 @@ paths:
                       phone:
                         type: string
                         description: 用户手机号码
-                        example: 13538383838
+                        example: "13538383838"
                       balance:
                         type: integer
                         description: 用户余额
@@ -207,7 +207,7 @@ paths:
                   example: wyf
                 password:
                   type: string
-                  example: 123456
+                  example: "123456"
                 email:
                   type: string
                   description: 用户电子邮箱
@@ -215,7 +215,7 @@ paths:
                 phone:
                   type: string
                   description: 用户手机号码
-                  example: 13538383838
+                  example: "13538383838"
                 balance:
                   type: integer
                   description: 用户余额
@@ -395,7 +395,7 @@ paths:
                 phone :
                   description: 联系方式
                   type: string
-                  example: 13538383838
+                  example: "13538383838"
       responses:
         200:
           $ref: '#/components/responses/GeneralResponse'
@@ -477,7 +477,7 @@ paths:
                 phone :
                   description: 联系方式
                   type: string
-                  example: 13538383838
+                  example: "13538383838"
       responses:
         200:
           $ref: '#/components/responses/GeneralResponseWithId'
