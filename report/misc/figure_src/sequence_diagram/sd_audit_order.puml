@@ -4,22 +4,26 @@
 
 ''' 定义类
 	actor Admin as act
-	boundary AuditInterface as bou
-	control AuditController as con
+	boundary AdminInterface as bou
+	control AdminController as con
 	database OrderList as db
 
 	autonumber
-	act -> bou : getOrderInfo()
-	bou -> con : getOrderInfo()
-	con -> db : queryOrderInfo()
-	db --> con : returnResult
-	con -> bou : orderInfo()
-	bou -> bou : displayOrderInfo()
-	act -> bou : verify()
-	bou -> con : verify()
+	act -> bou : auditEvent()
+	activate bou
+
+	bou -> con : audit()
+	activate con 
+
 	con -> db : update()
-	db --> con : returnTrue
-	con -> bou : verificationInfo()
-	bou -> bou : displayResult()
+	activate db
+
+	db --> con : returnResult
+	deactivate db
+
+	con --> bou : returnResult
+	deactivate con
+
+	bou -> bou : display()
 
 @enduml

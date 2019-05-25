@@ -1,0 +1,24 @@
+@startuml
+''' 省略底部
+
+left to right direction
+
+together {
+	boundary ProviderInterface 
+	control ProviderController 
+	entity UserList
+
+	ProviderInterface -- ProviderController
+	ProviderController -- UserList
+}
+
+together {
+	boundary PurchaserInterface 
+	control PurchaserController 
+	entity UserList
+
+	PurchaserInterface -- PurchaserController
+	PurchaserController -- UserList
+}
+
+@enduml

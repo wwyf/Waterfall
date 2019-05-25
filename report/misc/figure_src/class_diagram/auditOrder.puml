@@ -1,0 +1,13 @@
+@startuml
+''' 省略底部
+
+left to right direction
+
+	boundary AdminInterface 
+	control AdminController 
+	entity OrderList
+
+	AdminInterface -- AdminController
+	AdminController -- OrderList
+
+@enduml

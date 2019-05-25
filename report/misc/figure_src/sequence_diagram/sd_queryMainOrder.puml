@@ -4,16 +4,26 @@
 
 ''' 定义类
 	actor User as act
-	boundary QueryInterface as bou
-	control QueryController as con
+	boundary UserInterface as bou
+	control UserController as con
 	database MainOrderList as db
 
 	autonumber
-	act -> bou : fillQueryInfo()
-	bou -> con : getInfo()
+	act -> bou : queryEvent()
+	activate bou
+
+	bou -> con : queryMainOrder()
+	activate con
+
 	con -> db :  query()
+	activate db
+
 	db --> con : returnResult
+	deactivate db
+
 	con -> bou : queryResult()
+	deactivate con
+
 	bou -> bou : display()
 
 @enduml

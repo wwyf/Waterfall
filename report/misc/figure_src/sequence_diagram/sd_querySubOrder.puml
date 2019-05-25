@@ -4,24 +4,24 @@
 
 ''' 定义类
 	actor User as act
-	boundary ProviderInterface as bou
-	control ProviderController as con
-	database UserList as db
+	boundary UserInterface as bou
+	control UserController as con
+	database SubOrderList as db
 
 	autonumber
-	act -> bou : enrollEvent()
+	act -> bou : queryEvent()
 	activate bou
 
-	bou -> con : enroll()
+	bou -> con : queryMainOrder()
 	activate con
 
-	con -> db : insert()
+	con -> db :  query()
 	activate db
 
 	db --> con : returnResult
 	deactivate db
 
-	con --> bou : returnResult
+	con -> bou : queryResult()
 	deactivate con
 
 	bou -> bou : display()

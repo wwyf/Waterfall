@@ -1,0 +1,13 @@
+@startuml
+''' 省略底部
+
+left to right direction
+
+	boundary PurchaserInterface 
+	control PurchaserController 
+	entity UserList
+
+	PurchaserInterface -- PurchaserController
+	PurchaserController -- UserList
+
+@enduml

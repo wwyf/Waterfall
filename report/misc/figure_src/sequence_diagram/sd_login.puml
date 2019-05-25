@@ -4,16 +4,26 @@
 
 ''' 定义类
 	actor User as act
-	boundary LoginInterface as bou
-	control LoginController as con
+	boundary UserInterface as bou
+	control UserController as con
 	database UserList as db
 
 	autonumber
-	act -> bou : fillLoginInfo()
-	bou -> con : isLoginInfoValid()
-	con -> db : Query()
-	db -> con : ReturnTrue
-	con -> bou : LoginResult()
-	bou -> bou : Display()
+	act -> bou : loginEvent()
+	activate bou
+
+	bou -> con : login()
+	activate con 
+
+	con -> db : query()
+	activate db
+
+	db --> con : ReturnResult
+	deactivate db
+
+	con --> bou : ReturnResult
+	deactivate con
+
+	bou -> bou : display()
 
 @enduml

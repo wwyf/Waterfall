@@ -1,0 +1,134 @@
+@startuml
+' default
+' top to down direction
+' 禁用图形特性
+
+' scale 5000*1000
+
+skinparam classAttributeIconSize 0
+
+class MainOrder{
+	-id
+	-name
+	-summary
+	-createdate
+	-deadline
+	-address
+	-quantity
+	-price
+	-totalprice
+	-createuser
+	-comments
+	-phone
+	-status
+	-progress
+	+to_json()
+}
+
+class SubOrder{
+	-id
+	-mainorder
+	-createdate
+	-createuser
+	-quantity
+	-comments
+	-phone
+	-status
+	+to_json()
+}
+
+
+
+class User{
+	-username
+	-password
+	-email
+	-phone
+	-usertype
+	-balance
+	-userstatus
+}
+
+class UserController{
+	+enroll()
+	+login()
+	+queryMainorder()
+	+querySuborder()
+'TODO
+'不知道要不要钱包功能
+}
+
+class AdminController{
+'审核功能'
+	+audit()
+}
+
+class ProviderController{
+	+commit()
+	+join()
+}
+
+class PurchaserController{
+	+apply()
+}
+
+
+
+class UserInterface{
+	+display()
+	+loginEvent()
+	+queryEvent()
+}
+
+class AdminInterface{
+	+auditEvent()
+
+}
+
+class ProviderInterface{
+	+joinEvent()
+	+enrollEvent()
+	+commitEvent()
+}
+
+class PurchaserInterface{
+	+enrollEvent()
+	+applyEvent()
+}
+
+together {
+	class User
+	class MainOrder
+	class SubOrder
+}
+
+together {
+	class UserController
+	class AdminController
+	class ProviderController
+	class PurchaserController
+}
+
+UserInterface <|-- AdminInterface
+UserInterface <|-- ProviderInterface
+UserInterface <|-- PurchaserInterface
+
+UserController <|-- AdminController
+UserController <|-- ProviderController
+UserController <|-left- PurchaserController
+
+User <|-- Admin
+User <|-- Purchaser
+User <|-- Provider
+
+
+MainOrder -[hidden]down- User
+MainOrder -[hidden]down- UserController
+MainOrder -[hidden]down- UserInterface
+SubOrder -[hidden]down- User
+SubOrder -[hidden]down- UserController
+SubOrder -[hidden]down- UserInterface
+Provider -[hidden]down- UserInterface
+AdminController -[hidden]down- UserInterface
+
+@enduml

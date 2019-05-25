@@ -3,17 +3,27 @@
 	hide footbox 
 
 ''' 定义类
-	actor User as act
-	boundary CommitInterface as bou
-	control CommitController as con
+	actor Provider as act
+	boundary ProviderInterface as bou
+	control ProviderController as con
 	database OrderList as db
 
 	autonumber
-	act -> bou : fillCommitInfo()
-	bou -> con : getInfo()
-	con -> db : createTmpOrder()
-	db --> con : returnTrue 
-	con -> bou : commitResult()
+	act -> bou : commitEvent()
+	activate bou
+
+	bou -> con : commit()
+	activate con
+
+	con -> db : insert()
+	activate db
+
+	db --> con : returnResult
+	deactivate db
+
+	con --> bou : returnResult
+	deactivate con
+	
 	bou -> bou : display()
 
 @enduml
