@@ -1,0 +1,19 @@
+@startuml
+''' 省略底部
+	hide footbox 
+
+''' 定义类
+	actor User as act
+	boundary QueryInterface as bou
+	control QueryController as con
+	database MainOrderList as db
+
+	autonumber
+	act -> bou : fillQueryInfo()
+	bou -> con : getInfo()
+	con -> db :  query()
+	db --> con : returnResult
+	con -> bou : queryResult()
+	bou -> bou : display()
+
+@enduml

@@ -1,0 +1,19 @@
+@startuml
+''' 省略底部
+	hide footbox 
+
+''' 定义类
+	actor Purchaser as act
+	boundary GenerateOrderInterface as bou
+	control GeneratingController as con
+	database MainOrderList as db
+
+	autonumber
+	act -> bou : fillOrderInfo()
+	bou -> con : isLoginInfoValid()
+	con -> db : createTmpOrder()
+	db -> con : returnTrue
+	con -> bou : createResult()
+	bou -> bou : display()
+
+@enduml
