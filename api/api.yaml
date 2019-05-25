@@ -9,7 +9,7 @@ servers:
     description: Production server
 paths:
   # /apis:
-  /apis/user:
+  /apis/user/login:
     get:
       tags: 
         - 用户相关
@@ -67,10 +67,182 @@ paths:
                       userid:
                         type: integer
                         example: 2
-  # /apis/user/login:
-  # /apis/user/register:
-  # /apis/user/logout:
-  # /apis/user/{userId}:
+  /apis/user/register:
+    post:
+      tags: 
+        - 用户相关
+      summary: 注册新用户
+      description: 注册新用户
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                username:
+                  type: string
+                  description: 用户名
+                  example: wyf
+                password:
+                  type: string
+                  description: 密码
+                  example: 123456
+                role:
+                  type: string
+                  description: 用户身份
+                  enum:
+                    - "provider"
+                    - "customer"
+                    - "manager"
+      responses:
+        200:
+          description: 注册成功
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    type: object
+                    properties:
+                      msg:
+                        type: string
+                        example: "注册成功"
+                      userid:
+                        type: integer
+                        example: 2
+  /apis/user/logout:
+    post:
+      tags: 
+        - 用户相关
+      summary: 登出
+      description: 登出
+      responses:
+        200:
+          description: 登出成功
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    type: object
+                    properties:
+                      msg:
+                        type: string
+                        example: "登出成功"
+                      userid:
+                        type: integer
+                        example: 2
+  /apis/user/{userId}:
+    parameters:
+      - $ref: '#/components/parameters/userIdParam'
+    get:
+      tags: 
+        - 用户相关
+      summary: 获取指定用户信息
+      description: 获取指定用户信息
+      responses:
+        200:
+          description: 成功获取并返回登陆状态
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    type: object
+                    properties:
+                      username:
+                        type: string
+                        description: 用户名
+                        example: wyf
+                      email:
+                        type: string
+                        description: 用户电子邮箱
+                        example: klfsl@163.com
+                      phone:
+                        type: string
+                        description: 用户手机号码
+                        example: 13538383838
+                      balance:
+                        type: integer
+                        description: 用户余额
+                        example: 999
+                      role:
+                        type: string
+                        description: 用户身份
+                        enum:
+                          - "provider"
+                          - "customer"
+                          - "manager"                    
+                      status:
+                        type: integer
+                        description: 用户账户状态（1：正在审核中 0：可用）
+                        enum:
+                          - 0
+                          - 1                                          
+    post:
+      tags: 
+        - 用户相关
+      summary: 变更用户信息
+      description: 变更用户信息
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                username:
+                  type: string
+                  example: wyf
+                password:
+                  type: string
+                  example: 123456
+                email:
+                  type: string
+                  description: 用户电子邮箱
+                  example: klfsl@163.com
+                phone:
+                  type: string
+                  description: 用户手机号码
+                  example: 13538383838
+                balance:
+                  type: integer
+                  description: 用户余额
+                  example: 999
+                role:
+                  type: string
+                  description: 用户身份
+                  enum:
+                    - "provider"
+                    - "customer"
+                    - "manager"                    
+                status:
+                  type: integer
+                  description: 用户账户状态（1：正在审核中 0：可用）
+                  enum:
+                    - 0
+                    - 1                             
+      responses:
+        200:
+          description: 修改成功
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    type: object
+                    properties:
+                      msg:
+                        type: string
+                        example: "修改成功"
+                      userid:
+                        type: integer
+                        example: 2
   /apis/order/mainOrder:
     get:
       tags: 
