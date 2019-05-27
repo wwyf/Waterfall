@@ -3,13 +3,13 @@ info:
   title: Waterfall API overview
   version: "1.0.0"
 servers:
+# Added by API Auto Mocking Plugin
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/Waterfall/Waterfall-backend/1.0.0
   - url: 'https://waterfall.wwyf.top'
     description: Production server
   - url: 'http://localhost:5000'
     description: Test server
-# Added by API Auto Mocking Plugin
-  - description: SwaggerHub API Auto Mocking
-    url: https://virtserver.swaggerhub.com/Waterfall/Waterfall-backend/1.0.0
 paths:
   /apis/user/login:
     get:
@@ -138,7 +138,7 @@ paths:
       summary: 登出(TODO)
       description: 登出
       security:
-      - cookieAuth: []
+        - cookieAuth: []
       responses:
         '200':
           description: 登出成功
@@ -165,6 +165,8 @@ paths:
         - 用户相关
       summary: 获取指定用户信息(TODO)
       description: 获取指定用户信息
+      security:
+        - cookieAuth: []
       responses:
         '200':
           description: 成功获取并返回登陆状态
@@ -211,6 +213,8 @@ paths:
         - 用户相关
       summary: 变更用户信息(TODO)
       description: 变更用户信息
+      security:
+        - cookieAuth: []
       requestBody:
         content:
           application/json:
@@ -265,6 +269,29 @@ paths:
                       userid:
                         type: integer
                         example: 2
+  /apis/user/check/{username}:
+    parameters:
+      - $ref: '#/components/parameters/usernameParam'
+    get:
+      tags:
+        - 用户相关
+      summary: 获取登陆状态
+      description: 获取登陆状态
+      responses:
+        '200':
+          description: 当前用户名不存在（不存在的话返回值为0，存在的话返回值为1）
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    type: object
+                    properties:
+                      msg:
+                        type: string
+                        example: 该用户名不存在
   /apis/order/mainOrder:
     get:
       tags:
@@ -881,6 +908,15 @@ components:
       schema:
         title: 用户id
         type: integer
+    usernameParam:
+      name: username
+      description: 用户名
+      in: path
+      required: true
+      schema:
+        title: 用户名
+        type: string
+        example: admin
   responses:
     GeneralResponseWithId:
       description: General response
