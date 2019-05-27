@@ -275,8 +275,8 @@ paths:
     get:
       tags:
         - 用户相关
-      summary: 获取登陆状态
-      description: 获取登陆状态
+      summary: 判断用户名是否可用
+      description: 判断用户名是否可用
       responses:
         '200':
           description: 当前用户名不存在（不存在的话返回值为0，存在的话返回值为1）
