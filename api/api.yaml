@@ -269,7 +269,7 @@ paths:
                       userid:
                         type: integer
                         example: 2
-  /apis/user/check/{username}:
+  /apis/user/checkuser/{username}:
     parameters:
       - $ref: '#/components/parameters/usernameParam'
     get:
