@@ -269,14 +269,14 @@ paths:
                       userid:
                         type: integer
                         example: 2
-  /apis/user/check/{username}:
+  /apis/user/checkuser/{username}:
     parameters:
       - $ref: '#/components/parameters/usernameParam'
     get:
       tags:
         - 用户相关
-      summary: 获取登陆状态
-      description: 获取登陆状态
+      summary: 判断用户名是否可用
+      description: 判断用户名是否可用
       responses:
         '200':
           description: 当前用户名不存在（不存在的话返回值为0，存在的话返回值为1）
@@ -459,6 +459,27 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/GeneralResponse'
+  '/apis/order/mainOrder/{mainOrderId}/subOrders':
+    parameters:
+      - $ref: '#/components/parameters/mainOrderIdParam'
+    get:
+      tags:
+        - 母订单相关
+      summary: 获取该母订单对应的子订单列表
+      description: 获得所有子订单，并且获得每个订单的内部详细字段。
+      responses:
+        '200':
+          description: 成功获取并返回订单信息
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/subOrder_view'
   /apis/order/subOrder:
     get:
       tags:
@@ -817,7 +838,7 @@ components:
         quantity:
           description: 母订单所需货物数量
           type: integer
-          example: 3
+          example: 50
         status:
           description: 订单状态(1：正在进行中 3：已完成 4：已取消)
           type: integer
