@@ -135,7 +135,7 @@ paths:
     post:
       tags:
         - 用户相关
-      summary: 登出(TODO)
+      summary: 登出
       description: 登出
       security:
         - cookieAuth: []
@@ -163,7 +163,7 @@ paths:
     get:
       tags:
         - 用户相关
-      summary: 获取指定用户信息(TODO)
+      summary: 获取指定用户信息
       description: 获取指定用户信息
       security:
         - cookieAuth: []
@@ -211,7 +211,7 @@ paths:
     post:
       tags:
         - 用户相关
-      summary: 变更用户信息(TODO)
+      summary: 变更用户信息
       description: 变更用户信息
       security:
         - cookieAuth: []
@@ -509,7 +509,7 @@ paths:
       tags:
         - 子订单相关
       summary: 提交新子订单
-      description: '在数据表中增加一条子订单（TODO:可能需要处理相应的母订单，增加相应的供应量）'
+      description: '在数据表中增加一条子订单'
       requestBody:
         content:
           application/json:
@@ -596,7 +596,7 @@ paths:
       tags:
         - 子订单相关
       summary: 完成指定子订单
-      description: '讲该子订单的状态修改为完成状态（TODO:需要处理相应的母订单）'
+      description: '讲该子订单的状态修改为完成状态'
       responses:
         '200':
           $ref: '#/components/responses/GeneralResponse'
@@ -758,7 +758,7 @@ components:
           title: 联系方式（即手机号码）
           type: string
         status:
-          title: 订单状态(TODO)
+          title: 订单状态(1：正在进行中 3：已完成 4：已取消)
           type: integer
           enum:
             - 0
