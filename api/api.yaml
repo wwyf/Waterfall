@@ -351,10 +351,6 @@ paths:
                   description: 订单单价
                   type: integer
                   example: 100
-                createuser:
-                  description: 当前用户的id
-                  type: integer
-                  example: 1
                 comments:
                   description: 订单备注
                   type: string
