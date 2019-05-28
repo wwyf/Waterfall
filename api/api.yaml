@@ -388,9 +388,6 @@ paths:
                     properties:
                       order:
                         $ref: '#/components/schemas/mainOrder_view'
-                      msg:
-                        type: string
-                        example: successful
     post:
       tags:
         - 母订单相关
@@ -515,7 +512,7 @@ paths:
           application/json:
             schema:
               properties:
-                mainOrderId:
+                mainorder:
                   type: integer
                   description: 与该子订单对应的母订单id
                   example: 1
@@ -561,9 +558,6 @@ paths:
                     properties:
                       order:
                         $ref: '#/components/schemas/subOrder_view'
-                      msg:
-                        type: string
-                        example: successful
     post:
       tags:
         - 子订单相关
@@ -618,7 +612,9 @@ paths:
       tags:
         - 个人钱包
       description: 获取指定用户钱包余额
-      summary: 获取指定用户钱包余额（TODO）
+      summary: 获取指定用户钱包余额
+      security:
+        - cookieAuth: []
       responses:
         '200':
           description: Successful response
@@ -637,17 +633,16 @@ paths:
                         title: 指定用户的余额
                         type: integer
                         example: 89238
-                      msg:
-                        type: string
-                        example: 已提交成功
   '/wallet/{userId}/deposit':
     parameters:
       - $ref: '#/components/parameters/userIdParam'
     post:
       tags:
         - 个人钱包
-      summary: 充值接口（TODO）
+      summary: 充值接口
       description: 充值接口
+      security:
+        - cookieAuth: []
       requestBody:
         content:
           application/json:
@@ -666,8 +661,10 @@ paths:
     post:
       tags:
         - 个人钱包
-      summary: 提现接口（TODO）
+      summary: 提现接口
       description: 提现接口
+      security:
+        - cookieAuth: []
       requestBody:
         content:
           application/json:
@@ -770,7 +767,7 @@ components:
           description: 在数据库中子订单的唯一ID
           type: integer
           format: int64
-        mainOrderId:
+        mainorder:
           type: integer
           description: 与该子订单对应的母订单id
         createdate:
@@ -871,7 +868,7 @@ components:
         id:
           type: string
           description: 子订单id
-        mainOrderId:
+        mainorder:
           type: string
           description: 与该子订单对应的母订单id
         phone:
