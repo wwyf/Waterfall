@@ -836,6 +836,10 @@ components:
           description: 母订单所需货物数量
           type: integer
           example: 50
+        remain_quantity:
+          description: 母订单剩余需要货物的数量（50-11=39）
+          type: integer
+          example: 39
         status:
           description: 订单状态(1：正在进行中 3：已完成 4：已取消)
           type: integer
