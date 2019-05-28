@@ -512,7 +512,7 @@ paths:
           application/json:
             schema:
               properties:
-                mainOrderId:
+                mainorder:
                   type: integer
                   description: 与该子订单对应的母订单id
                   example: 1
@@ -767,7 +767,7 @@ components:
           description: 在数据库中子订单的唯一ID
           type: integer
           format: int64
-        mainOrderId:
+        mainorder:
           type: integer
           description: 与该子订单对应的母订单id
         createdate:
@@ -868,7 +868,7 @@ components:
         id:
           type: string
           description: 子订单id
-        mainOrderId:
+        mainorder:
           type: string
           description: 与该子订单对应的母订单id
         phone:
