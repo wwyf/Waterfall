@@ -424,7 +424,8 @@ paths:
                   type: string
                   example: 空备注
                 phone:
-                  description: 联系方式
+                  description: 联系方式(可选)
+                  title : phone字段为可选项，该字段从user profile中获得，若给了phone字段则从json_body中获取。
                   type: string
                   example: '13538383838'
       responses:
