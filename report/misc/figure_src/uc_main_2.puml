@@ -16,21 +16,24 @@ left to right direction
 MiniProvider -up- (用户登录)
 MiniProvider -up- (用户注册)
 MiniProvider -up- (查看子订单)
-MiniProvider -up- (提交子订单)
-
-Client -up- (用户登录)
-Client -up- (用户注册)
-Client -up- (发布母订单)
-Client -up- (查看母订单)
+MiniProvider -up- (加入母订单)
+MiniProvider -up- (钱包充值)
+MiniProvider -up- (余额提现)
 
 together {
 	Admin -- (用户查询)
     Admin -- (用户登录)
     Admin -- (查看子订单)
     Admin -- (查看母订单)
-    Admin -- (审核母订单)
     Admin -- (审核新用户)
 }
+
+Client -- (用户登录)
+Client -- (用户注册)
+Client -- (发布母订单)
+Client -- (查看母订单)
+Client -- (钱包充值)
+Client -- (余额提现)
 
 ''' 用于控制布局的连线, 不显示
 

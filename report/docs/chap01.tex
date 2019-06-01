@@ -31,7 +31,7 @@ TODO: 简化用例图，适当减少功能，用例图需要重做一个
 \begin{figure}[htp]
     %\begin{adjustwidth}{-1.5cm}{-1cm}
     \centering
-    \includegraphics[width=12cm]{figure/usecase/uc_main_ver2.png}
+    \includegraphics[width=12cm]{figure/usecase/uc_main_ver3.png}
     \caption{“鲜天下”用例图}
     \label{fig:usecase-main}
     %\end{adjustwidth}
@@ -42,7 +42,58 @@ TODO: 简化用例图，适当减少功能，用例图需要重做一个
 
 \subsection{注册用例的用例规约}
 
-% TODO: 编写注册用例的用例规约  by wyf
+\begin{figure}[htp]
+        %\begin{adjustwidth}{-1.5cm}{-1cm}
+        \centering
+        \includegraphics[width=12cm]{figure/usecase/uc_sub/uc_enroll.png}
+        \caption{用户注册用例-活动图}
+        \label{fig:enroll-uml}
+        %\end{adjustwidth}
+    \end{figure}
+    
+
+\begin{enumerate}
+    \item \textbf{简要说明}  \\ 本用例描述订购商/微供应商/管理员如何在鲜天下平台进行注册。
+    \item \textbf{参与者} \\ 订购商、微供应商、管理员， 以下简称用户
+    \item \textbf{事件流} \\ 相应活动图可见\autoref{fig:enroll-uml}。
+    \begin{enumerate} 
+        \item \textbf{基本事件流} \\ 本用例开始于用户获取鲜天下平台注册界面。
+        \begin{enumerate}
+            \item 系统请求用户基本注册信息。
+            \item 注册用户输入用户名。
+            \item 注册用户输入密码。
+            \item 注册用户再次输入密码。
+            \item 注册用户输入其他基本信息。
+            \begin{enumerate}
+                \item 用户名已存在。
+                \item 二次密码输入与第一次密码输入不匹配。
+                \item 其他信息不合法。
+            \end{enumerate}
+            \item 用户成功注册并等待验证。
+        \end{enumerate}
+        \item \textbf{后备事件流}
+        \begin{enumerate}
+            \item 用户名已存在。
+            \begin{enumerate}
+                \item 系统显示错误信息 “用户名已存在”。
+                \item 返回事件流第一步。
+            \end{enumerate}
+            \item 二次密码输入与第一次密码输入不匹配。
+            \begin{enumerate}
+                \item 系统显示错误信息 “两次输入不匹配”。
+                \item 返回事件流第三步。
+            \end{enumerate}
+            \item 其他信息不合法。
+            \begin{enumerate}
+                \item 系统显示相应错误信息。
+                \item 返回事件流第四步。
+            \end{enumerate}
+        \end{enumerate}
+    \end{enumerate}
+    \item \textbf{特殊需求} \\ 密码输入框必须以密文方式呈现。
+    \item \textbf{前置条件} \\ 用例开始前， 用户需要打开对应的系统注册界面。
+    \item \textbf{后置条件} \\ 如果用例成功， 用户信息需要保存在后端数据库中并且用户状态应该设置为待验证状态。
+\end{enumerate}
 
 \subsection{登录用例的用例规约}
 
@@ -108,8 +159,17 @@ TODO: 简化用例图，适当减少功能，用例图需要重做一个
 \subsection{采购商提交母订单用例的用例规约}
 
 % TODO: 采购商提交母订单用例的用例规约 by jh
+\begin{figure}[htp]
+        %\begin{adjustwidth}{-1.5cm}{-1cm}
+        \centering
+        \includegraphics[width=12cm]{figure/usecase_v2/fabu.png}
+        \caption{登录用例-活动图}
+        \label{fig:put-mon-order-uml}
+        %\end{adjustwidth}
+    \end{figure}
+
 \begin{enumerate}
-    \item \textbf{简要说明}  \\ 本用例允许采购商向"鲜天下"平台提交母订单。在完成了注册并通过审核后，采购商可以登陆"鲜天下"平台，然后向"鲜天下"平台提交生成母订单请求。
+    \item \textbf{简要说明}  \\ 本用例允许采购商向"鲜天下"平台提交母订单。在完成了登录后，采购商可以进入"鲜天下"平台发布母订单界面，然后向"鲜天下"平台提交生成母订单请求。
     \item \textbf{参与者} \\ 采购商。
     \item \textbf{事件流} \\ 相应活动图可见\autoref{fig:put-mon-order-uml}。
     \begin{enumerate} 
@@ -167,14 +227,14 @@ TODO: 简化用例图，适当减少功能，用例图需要重做一个
 \end{enumerate}
 
 
-\begin{figure}[htp]
-    %\begin{adjustwidth}{-1.5cm}{-1cm}
-    \centering
-    \includegraphics[width=12cm]{image/chap01/uc_client_submit_request.png}
-    \caption{采购商提交母订单用例-活动图}
-    \label{fig:put-mon-order-uml}
-    %\end{adjustwidth}
-\end{figure}
+% \begin{figure}[htp]
+%     %\begin{adjustwidth}{-1.5cm}{-1cm}
+%     \centering
+%     \includegraphics[width=12cm]{image/chap01/uc_client_submit_request.png}
+%     \caption{采购商提交母订单用例-活动图}
+%     \label{fig:put-mon-order-uml}
+%     %\end{adjustwidth}
+% \end{figure}
 
 
 
