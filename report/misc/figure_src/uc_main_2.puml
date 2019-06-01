@@ -21,7 +21,8 @@ MiniProvider -up- (钱包充值)
 MiniProvider -up- (余额提现)
 
 together {
-	Admin -- (用户查询)
+	Admin -- (用户管理)
+	Admin -- (订单管理)
     Admin -- (用户登录)
     Admin -- (查看子订单)
     Admin -- (查看母订单)

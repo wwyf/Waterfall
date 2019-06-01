@@ -45,7 +45,7 @@ TODO: 简化用例图，适当减少功能，用例图需要重做一个
 \begin{figure}[htp]
         %\begin{adjustwidth}{-1.5cm}{-1cm}
         \centering
-        \includegraphics[width=12cm]{figure/usecase/uc_sub/uc_enroll.png}
+        \includegraphics[width=12cm]{misc/figure_src/uc_sub/uc_enroll.png}
         \caption{用户注册用例-活动图}
         \label{fig:enroll-uml}
         %\end{adjustwidth}
@@ -81,12 +81,12 @@ TODO: 简化用例图，适当减少功能，用例图需要重做一个
             \item 二次密码输入与第一次密码输入不匹配。
             \begin{enumerate}
                 \item 系统显示错误信息 “两次输入不匹配”。
-                \item 返回事件流第三步。
+                \item 返回事件流第二步。
             \end{enumerate}
             \item 其他信息不合法。
             \begin{enumerate}
                 \item 系统显示相应错误信息。
-                \item 返回事件流第四步。
+                \item 返回事件流第三步。
             \end{enumerate}
         \end{enumerate}
     \end{enumerate}
@@ -114,7 +114,7 @@ TODO: 简化用例图，适当减少功能，用例图需要重做一个
 
 \begin{enumerate}
 	\item \textbf{简要说明}  \\ 本用例描述订购商/微供应商/管理员如何登录到鲜天下平台。
-	\item \textbf{参与者} \\ 订购商、微供应商、管理员， 以下简称用户
+	\item \textbf{参与者} \\ 订购商、微供应商、管理员， 以下简称用户。
 	\item \textbf{事件流} \\ 相应活动图可见\autoref{fig:logon-uml}。
 	\begin{enumerate} 
         \item \textbf{基本事件流} \\ 本用例开始于用户希望登录到鲜天下平台。
@@ -156,14 +156,14 @@ TODO: 简化用例图，适当减少功能，用例图需要重做一个
 \end{enumerate}
 
 
-\subsection{采购商提交母订单用例的用例规约}
+\subsection{发布母订单用例的用例规约}
 
 % TODO: 采购商提交母订单用例的用例规约 by jh
 \begin{figure}[htp]
         %\begin{adjustwidth}{-1.5cm}{-1cm}
         \centering
         \includegraphics[width=12cm]{figure/usecase_v2/fabu.png}
-        \caption{登录用例-活动图}
+        \caption{发布母订单-活动图}
         \label{fig:put-mon-order-uml}
         %\end{adjustwidth}
     \end{figure}
@@ -175,228 +175,211 @@ TODO: 简化用例图，适当减少功能，用例图需要重做一个
     \begin{enumerate} 
         \item \textbf{基本事件流} \\ 本用例开始于供应商登录到"鲜天下"平台，并点击发起母订单。
         \begin{enumerate}
-            \item 采购商选择输入需要虾的数量、支付方式、配送信息（包括配送地址、配送方式、接收人姓名、接收人联系方式）和备注信息；\\
-            选择配送地点过程为:系统显示可选地点列表，用户依次点选省，市，区， 系统显示的可选地点列表层级也从省，下降到是市，最后到区。用户最后需手动输入街道地址。系统会在用户的输入面板上方列出用户使用的过往完整地址，用户可以点击历史地址来一次性完成地址输入。
-            选择配送方式为点选系统提供的几种可选配送方式之一。\\
-            选择支付方式为点选系统提供的几种可选配送方式之一。\\
-        ​    订单信息填写页面除了备注信息外其他全部为必要信息。\\
+            \item 输入订单名字 
+            \item 输入订单概要 
+            \item 输入订单地址 
+            \item 选择订单截止日期 
+            \item 平台检测截止日期是否合法 
+            \begin{enumerate}
+                \item 截止日期是否是过去时间
+            \end{enumerate}
+
+            \item 用户输入订单单价 
+            \begin{enumerate}
+                \item 订单单价是非数字字符串
+                \item 订单单价是负数
+            \end{enumerate}
             %tips：不知道还要加什么信息
 
-            \item 系统检测用户的输入是否合法。
+            \item 用户输入订单数量 
             \begin{enumerate}
-                \item 除备注信息外还有选项没有填写。
-                \item 输入的自定义信息不合法，包括姓名、联系方式和详细配送地址。
+                \item 订单数量是非数字字符串
+                \item 订单数量是负数
             \end{enumerate}
 
-            \item 用户选择确认当前信息继续进行预约或取消交易。
-            \begin{enumerate}
-                \item 用户选择继续。
-            \end{enumerate}
-
-            \item 鲜天下"平台将合法请求发送给管理员。
-            
-            \item 鲜天下"平台x。
-
-            \item 采购商接收"鲜天下"平台的返回信息并显示在界面上。
+            \item 用户点击提交按钮
+            \item 平台提示成功提交的信息
 
         \end{enumerate}
+
         \item \textbf{后备事件流}
         \begin{enumerate}
-            \item "鲜天下"平台解析请求后发现订单中货物数量超过平台的供货量。
+            \item 截止日期不合法
             \begin{enumerate}
-                \item "鲜天下"平台解析不合法原因为超过平台的供货量、地址超出配送范围。
-                \item 供应商接收返回信息“超过平台的供货量”并显示在界面上。
+                \item 平台提示截止日期不合法
+                \item 返回第四步
             \end{enumerate}
 
-            \item "鲜天下"平台解析请求后发现订单中货物数量超过平台的供货量。
+            \item 订单单价输入不合法
             \begin{enumerate}
-                \item "鲜天下"平台解析不合法原因为超过平台的供货量、地址超出配送范围。
-                \item 供应商接收返回信息“超过平台的供货量”并显示在界面上。
+                \item 平台提示订单单价不合法
+                \item 返回第五步
             \end{enumerate}
 
-            \item 微供应商用户选择取消提交。
+            \item 订单数量输入不合法
             \begin{enumerate}
-                \item 微供应商界面弹出接收返回信息“超过平台的供货量”并显示在界面上。
+                \item 平台提示订单数量输入不合法
+                \item 返回第六步
             \end{enumerate}
-
         \end{enumerate}
     \end{enumerate}
-    \item \textbf{特殊需求} \\ 无。
-    \item \textbf{前置条件} \\ 用例开始前, 供应商用户需要处于已登录状态下, 处于有生成母订单的界面。
-    \item \textbf{后置条件} \\ 在数据库中暂存母订单信息，状态为"待审核"状态。经过管理员的进一步审核后，如果订单通过审核，则将订单状态从"待审核状态"改为"待执行"状态，使得订单能够被分派出去成为"执行中"状态；如果订单没有通过审核，在审核后将订单状态改为"未通过审核"状态，并在一个月后将订单丢弃。人工面谈后交付定金)，订单状态均切换为待完成态。
+    \item \textbf{特殊需求} \\ 截止日期应该是一个有内容待选界面的输入。
+    \item \textbf{前置条件} \\ 用例开始前, 供应商用户需要处于已登录状态下, 并进入于发布母订单界面。
+    \item \textbf{后置条件} \\ 在数据库中暂存母订单信息，状态为"待审核"状态。经过管理员的进一步审核后，如果订单通过管理员的审核，则将订单状态从"待审核状态"改为"待执行"状态，使得订单能够被分派出去成为"执行中"状态；如果订单没有通过审核，在审核后将订单状态改为"未通过审核"状态，并在一个月后将订单丢弃。人工面谈后交付定金)，订单状态均切换为待完成态。
 \end{enumerate}
 
 
-% \begin{figure}[htp]
-%     %\begin{adjustwidth}{-1.5cm}{-1cm}
-%     \centering
-%     \includegraphics[width=12cm]{image/chap01/uc_client_submit_request.png}
-%     \caption{采购商提交母订单用例-活动图}
-%     \label{fig:put-mon-order-uml}
-%     %\end{adjustwidth}
-% \end{figure}
 
-
-
-\subsection{采购商查看母订单用例的用例规约}
-
-% TODO: 采购商查看母订单用例的用例规约 by jh
-\begin{enumerate}
-    \item \textbf{简要说明}  \\ 本用例允许采购商查看与他相关的母订单信息，同时也允许管理员查看指定母订单的信息。
-    \item \textbf{参与者} \\ 采购商、管理员。
-    \item \textbf{事件流} \\ 相应活动图可见\autoref{fig:uc_order_query-uml}。
-    \begin{enumerate} 
-        \item \textbf{基本事件流} \\ 本用例开始于采购商或管理员处于登陆界面并且在"鲜天下"平台点击查看母订单请求的按钮。
-        \begin{enumerate}
-            \item 管理员和采购商填写过滤条件发起请求。
-            管理员可选的过滤条件包括订单日期范围（开始日期和结束日期均由系统给出，结束日期原则上不可超过当前日期）、采购商列表、微供应商列表、货物数量范围。
-            采购商可选的过滤条件包括订单日期范围（开始日期和结束日期均由系统给出，结束日期原则上不可超过当前日期）、货物数量范围。采购商默认只有自身且不可修改、微供应商列表不可选。
-            %tips：因为是可选项过滤条件，保证了查询的合法性
-
-            \item "鲜天下"平台解析查看母订单请求。
-
-            \item "鲜天下"平台从数据库中取出相关订单信息
-
-            \item "鲜天下"平台将相关订单信息的内容发送到请求发送者
-            
-            \item 请求发送者将"鲜天下"平台返回的内容解析后将内容显示到界面上
-
-        \end{enumerate}
-        \item \textbf{后备事件流}  \\ 无。
-        
-    \end{enumerate}
-    \item \textbf{特殊需求} \\ 无。
-    \item \textbf{前置条件} \\ 本用例开始前采购商和管理员已经登陆成功，进入可以选择查看订单信息的界面。
-    \item \textbf{后置条件} \\ 无。
-\end{enumerate}
-
+\subsection{查看母订单用例的用例规约}
 \begin{figure}[htp]
     %\begin{adjustwidth}{-1.5cm}{-1cm}
     \centering
-    \includegraphics[width=4cm]{image/chap01/uc_order_query.png}
+    \includegraphics[width=4cm]{figure/usecase_v2/query_mainOrder.png}
     \caption{采购商查看母订单用例-活动图}
     \label{fig:uc_order_query-uml}
     %\end{adjustwidth}
 \end{figure}
 
-
-\subsection{微供应商查看可加入母订单的用例规约}
-
-% TODO: {微供应商查看可加入母订单的用例规约 by wyf
-
-\subsection{微供应商查看子订单用例的用例规约}
-
-% TODO: 微供应商查看子订单用例的用例规约 by jh
+% TODO: 采购商查看母订单用例的用例规约 by jh
 \begin{enumerate}
-    \item \textbf{简要说明}  \\ 本用例允许微供应商查看"鲜天下"平台为他分派的所有子订单信息，同时也允许管理员查看指定的订单信息。
-    \item \textbf{参与者} \\ 微供应商、管理员。
-    \item \textbf{事件流} \\ 相应活动图可见\autoref{fig:uc_suborder_query}。
+    \item \textbf{简要说明}  \\ 本用例允许用户查看所有母订单信息，同时也允许。
+    \item \textbf{参与者} \\ 采购商、管理员、微供应商，统称用户。
+    \item \textbf{事件流} \\ 相应活动图可见\autoref{fig:uc_order_query-uml}。
     \begin{enumerate} 
-        \item \textbf{基本事件流} \\ 本用例开始于采购商或管理员处于登陆界面并且在"鲜天下"平台点击查看母订单请求的按钮。
+        \item \textbf{基本事件流} \\ 本用例开始于用户已经登录进入平台。
         \begin{enumerate}
-            \item 管理员和采购商填写过滤条件发起请求。
-            管理员可选的过滤条件包括订单日期范围（开始日期和结束日期均由系统给出，结束日期原则上不可超过当前日期）、采购商列表、微供应商列表、货物数量范围。
-            微供应商可选的过滤条件包括订单日期范围（开始日期和结束日期均由系统给出，结束日期原则上不可超过当前日期）、货物数量范围。采购商列表不可选、微供应商默认只有自身且不可修改。
-            %tips：因为是可选项过滤条件，保证了查询的合法性
+            \item 用户点击跳转到母订单界面的按钮。
 
-            \item "鲜天下"平台解析查看订单子请求。
+            \item "鲜天下"平台解析请求并获取所有母订单信息。
 
-            \item "鲜天下"平台从数据库中取出相关订单信息。
+            \item "鲜天下"平台将所有母订单信息显示在界面上。
 
-            \item "鲜天下"平台将相关订单信息的内容发送到请求发起者处。
+            \item 用户选择过滤条件或排序条件。
             
-            \item 请求发起者将"鲜天下"平台返回的内容解析后将内容显示到界面上。
+            \item "鲜天下"平台将过滤或排序结果显示给用户。
 
         \end{enumerate}
         \item \textbf{后备事件流}  \\ 无。
         
     \end{enumerate}
     \item \textbf{特殊需求} \\ 无。
-    \item \textbf{前置条件} \\ 本用例开始前微供应商或管理员已经登陆成功，进入可以选择查看订单信息的界面。
-    \item \textbf{后置条件} \\ 无。
+    \item \textbf{前置条件} \\ 本用例开始前用户已经登录进入"鲜天下"平台。
+    \item \textbf{后置条件} \\ 本用例不对数据库作任何修改。
 \end{enumerate}
 
+
+
+\subsection{查看子订单用例的用例规约}
 \begin{figure}[htp]
     %\begin{adjustwidth}{-1.5cm}{-1cm}
     \centering
-    \includegraphics[width=4cm]{image/chap01/uc_suborder_query.png}
-    \caption{微供应商查看子订单用例-活动图}
+    \includegraphics[width=4cm]{figure/usecase_v2/query_subOrder.png}
+    \caption{查看子订单用例-活动图}
     \label{fig:uc_suborder_query}
     %\end{adjustwidth}
 \end{figure}
+% TODO: 微供应商查看子订单用例的用例规约 by jh
+\begin{enumerate}
+    \item \textbf{简要说明}  \\ 本用例允许用户查看所有子订单信息。
+    \item \textbf{参与者} \\ 采购商、微供应商、管理员，以下称用户。
+    \item \textbf{事件流} \\ 相应活动图可见\autoref{fig:uc_suborder_query}。
+    \begin{enumerate} 
+        \item \textbf{基本事件流} \\ 本用例开始于用户已经登录进入"鲜天下"平台。
+        \begin{enumerate}
+            \item 用户点击跳转到子订单界面的按钮。
+
+            \item "鲜天下"平台解析请求并获取所有子订单信息。
+
+            \item "鲜天下"平台将所有子订单信息显示在界面上。
+
+            \item 用户选择过滤条件或排序条件。
+            
+            \item "鲜天下"平台将过滤或排序结果显示给用户。
+
+        \end{enumerate}
+
+        \item \textbf{后备事件流}  \\ 无。
+        
+    \end{enumerate}
+    \item \textbf{特殊需求} \\ 无。
+    \item \textbf{前置条件} \\ 本用例开始前用户已经登录进入"鲜天下"平台。
+    \item \textbf{后置条件} \\ 本用例不对数据库作任何修改。
+\end{enumerate}
 
 
-\subsection{微供应商提交子订单用例的用例规约}
 
+
+\subsection{加入母订单用例的用例规约}
+\begin{figure}[htp]
+    %\begin{adjustwidth}{-1.5cm}{-1cm}
+    \centering
+    \includegraphics[width=12cm]{figure/usecase_v2/join.png}
+    \caption{加入母订单用例-活动图}
+    \label{fig:uc_suborder_query}
+    %\end{adjustwidth}
+\end{figure}
 % TODO: 微供应商提交子订单用例的用例规约 by jh
 \begin{enumerate}
-    \item \textbf{简要说明}  \\ 本用例允许微供应商向"鲜天下"平台提交用于更新订单完成进度的请求。
+    \item \textbf{简要说明}  \\ 本用例允许微供应商在"鲜天下"平台以类似众筹的方式加入还未完成母订单。
     \item \textbf{参与者} \\ 微供应商。
     \item \textbf{事件流} \\ 相应活动图可见\autoref{fig:uc_order_commit}。
     \begin{enumerate} 
-        \item \textbf{基本事件流} \\ 本用例开始于供应商登录到"鲜天下"平台，并点击发起母订单。
+        \item \textbf{基本事件流} \\ 本用例开始于供应商进入母订单页面，并点击加入母订单。
         \begin{enumerate}
-            \item 微供应商填写订单更新信息，包括完成进度、完成资料证明（包括货物重量信息、货物品种信息、养殖场地址信息、饲料来源信息）以及备注信息。\\
-            完成进度是一个百分比可选项，间隔为5\%，剩下的信息为自定义选项。
-
+            \item 微供应商填写可供应数量、备注和联系方式
             %tips：不知道还要加什么信息
 
-            \item 系统检测用户的输入是否合法。
+            \item 平台检查微供应商的输入信息是否合法
             \begin{enumerate}
-                \item 除备注信息外还有选项没有填写。
-                \item 输入的自定义信息不合法，包括重量信息。
+                \item 微供应商填写数量超过母订单当前需要的数量
+                \item 微供应商填写的联系方式不合法
             \end{enumerate}
 
-            \item 用户选择确认当前信息继续进行提交或取消提交。
+            \item 用户点击提交按钮。
+
+            \item 平台弹出再次确认界面
             \begin{enumerate}
-                \item 用户选择继续。
+                \item 用户点击确认按钮
+                \item 用户点击否认按钮
             \end{enumerate}
 
-            \item "鲜天下"平台将合法请求发送给管理员。
+            \item 平台提示用户成功加入母订单
             
-            \item 鲜天下"平台向提交请求的生产商发送"订单等待审核"的信息。
-
-            \item 采购商接收"鲜天下"平台的返回信息并显示在界面上。
 
         \end{enumerate}
         \item \textbf{后备事件流}
         \begin{enumerate}
-            \item "鲜天下"平台解析请求后发现订单中货物数量超过平台的供货量。
+            \item 微供应商填写数量超过母订单当前需要的数量
             \begin{enumerate}
-                \item "鲜天下"平台解析不合法原因为超过平台的供货量、地址超出配送范围。
-                \item 供应商接收返回信息“超过平台的供货量”并显示在界面上。
+                \item 平台提醒微供应商当前数量不合法
             \end{enumerate}
 
-            \item "鲜天下"平台解析请求后发现订单中货物数量超过平台的供货量。
+            \item 微供应商填写的联系方式不合法
             \begin{enumerate}
-                \item "鲜天下"平台解析不合法原因为超过平台的供货量、地址超出配送范围。
-                \item 供应商接收返回信息“超过平台的供货量”并显示在界面上。
+                \item 平台提醒微供应商的联系方式输入不合法
             \end{enumerate}
 
-            \item 微供应商用户选择取消提交。
+            \item 用户点击否认按钮
             \begin{enumerate}
-                \item 微供应商界面弹出接收返回信息“超过平台的供货量”并显示在界面上。
+                \item 返回第二步
             \end{enumerate}
-
         \end{enumerate}
     \end{enumerate}
     \item \textbf{特殊需求} \\ 无。
     \item \textbf{前置条件} \\ 用例开始前, 供应商用户需要处于已登录状态下, 处于有生成母订单的界面。
-    \item \textbf{后置条件} \\ 在数据库中暂存母订单信息，状态为"待审核"状态。经过管理员的进一步审核后，如果订单通过审核，则将订单状态从"待审核状态"改为"待执行"状态，使得订单能够被分派出去成为"执行中"状态；如果订单没有通过审核，在审核后将订单状态改为"未通过审核"状态，并在一个月后将订单丢弃。人工面谈后交付定金)，订单状态均切换为待完成态。
+    \item \textbf{后置条件} \\ 如果用户成功加入母订单后，要在后端数据库形成相应的子订单信息，并修改母订单信息。
+
 \end{enumerate}
 
+\subsection{管理员审核新用户用例的用例规约}
 \begin{figure}[htp]
     %\begin{adjustwidth}{-1.5cm}{-1cm}
     \centering
-    \includegraphics[width=4cm]{image/chap01/uc_order_commit.png}
-    \caption{微供应商提交子订单用例-活动图}
-    \label{fig:uc_order_commit}
+    \includegraphics[width=12cm]{figure/usecase/uc_sub/uc_admin_check_client.png}
+    \caption{后台审核新用户用例-活动图}
+    \label{fig:shenhe-order-uml}
     %\end{adjustwidth}
 \end{figure}
-
-
-\subsection{管理员审核新用户用例的用例规约}
-
 % TODO: 后台审核新用户用例的用例规约 by wyf
 
 \begin{enumerate}
@@ -432,31 +415,14 @@ TODO: 简化用例图，适当减少功能，用例图需要重做一个
 %\usepackage{float}
 %\usepackage[section]{placeins}
 %\begin{sidewaystable}[!Htp]
-\begin{figure}[htp]
-    %\begin{adjustwidth}{-1.5cm}{-1cm}
-    \centering
-    \includegraphics[width=0.4\textwidth]{figure/usecase/uc_sub/uc_admin_check_client.png}
-    \caption{后台审核新用户用例-活动图}
-    \label{fig:shenhe-order-uml}
-    %\end{adjustwidth}
-\end{figure}
 
-\subsection{管理员查看所有订单用例的用例规约}
 
-% TODO: 管理员查看所有订单用例的用例规约 by wyf
-
-% 需要查看的信息有？
-% 1. 流水号
-% 2. 订单生成时间
-% 3. 订单状态
-% 4. 订单操作按钮（关闭，还有其他操作？）
-
-\subsection{管理员用户管理用例的用例规约}
+\subsection{用户管理用例的用例规约}
 
 % TODO: 管理员用户管理用例的用例规约  by wyf
 % 需要查看的
 
-\subsection{管理员订单管理用例的用例规约}
+\subsection{订单管理用例的用例规约}
 
 % TODO:管理员订单管理用例的用例规约  by wyf
 
