@@ -1,0 +1,22 @@
+version: "3"
+services:
+  mysql:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    volumes:
+      - /var/lib/mysql
+    environment:
+      MYSQL_DATABASE: 'waterfall'
+      MYSQL_USER: "admin"
+      MYSQL_PASSWORD: "admin"
+      MYSQL_ROOT_PASSWORD: "admin"
+
+  backend:
+    image: wwyf/waterfall-backend:v1.4
+    volumes:
+      - ./sql_config.json:/app/src/db/sql_config.json
+    ports:
+      - 5000
+    depends_on:
+      - mysql
