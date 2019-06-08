@@ -1,0 +1,29 @@
+@startuml
+''' 省略底部
+	hide footbox 
+
+''' 定义类
+	actor Admin as act
+	boundary AdminInterface as bou
+	control AdminController as con
+	database UserList as db
+
+	autonumber
+	act -> bou : auditEvent()
+	activate bou
+
+	bou -> con : audit()
+	activate con 
+
+	con -> db : update()
+	activate db
+
+	db --> con : returnResult
+	deactivate db
+
+	con --> bou : returnResult
+	deactivate con
+
+	bou -> bou : display()
+
+@enduml

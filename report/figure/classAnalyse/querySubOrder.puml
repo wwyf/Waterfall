@@ -1,0 +1,13 @@
+@startuml
+''' 省略底部
+
+left to right direction
+
+	boundary UserInterface 
+	control OrderController 
+	entity SubOrder
+
+	UserInterface -- OrderController
+	OrderController -- SubOrder
+
+@enduml

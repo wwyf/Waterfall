@@ -1,0 +1,71 @@
+ @startuml
+' default
+' top to down direction
+' 禁用图形特性
+
+' scale 5000*1000
+
+skinparam classAttributeIconSize 0
+
+class MainOrder{
+	-id
+	-name
+	-summary
+	-createdate
+	-deadline
+	-address
+	-quantity
+	-price
+	-totalprice
+	-createuser
+	-comments
+	-phone
+	-status
+	-progress
+}
+
+class SubOrder{
+	-id
+	-mainorder
+	-createdate
+	-createuser
+	-quantity
+	-comments
+	-phone
+	-status
+}
+
+
+
+class User{
+	-userID
+	-username
+	-password
+	-email
+	-phone
+	-usertype
+	-balance
+	-userstatus
+}
+
+class Purse{
+	-balance
+}
+
+together {
+	class User
+	class MainOrder
+	class SubOrder
+}
+
+
+User "1" *-left- "1" Purse
+User <|-- Admin
+User <|-- Purchaser
+User <|-- Provider
+
+
+' MainOrder -[hidden]down- User
+SubOrder "*" .left.> "1" MainOrder
+
+@enduml

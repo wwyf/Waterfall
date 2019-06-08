@@ -1,0 +1,36 @@
+@startuml
+''' 省略底部
+	hide footbox 
+
+''' 定义类
+	actor Provider as act
+	boundary ProviderInterface as bou
+	control OrderController as con
+	database SubOrderList as db
+	database MainOrderList as db1
+
+	autonumber
+	act -> bou : joinEvent()
+
+	activate bou
+	bou -> con : join()
+
+	activate con
+	con -> db : insert()
+
+	activate db
+	con -> db1 : update()
+
+	activate db1
+	db1 --> con : returnResult
+
+	deactivate db1
+	db --> con : returnResult
+
+	deactivate db
+	con --> bou : returnResult
+
+	deactivate con
+	bou -> bou : display()
+
+@enduml

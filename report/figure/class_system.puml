@@ -1,0 +1,165 @@
+@startuml
+' default
+' top to down direction
+' 禁用图形特性
+
+' scale 5000*1000
+
+skinparam classAttributeIconSize 0
+
+class MainOrder{
+	-id
+	-name
+	-summary
+	-createdate
+	-deadline
+	-address
+	-quantity
+	-price
+	-totalprice
+	-createuser
+	-comments
+	-phone
+	-status
+	-progress
+	+to_json()
+}
+
+class SubOrder{
+	-id
+	-mainorder
+	-createdate
+	-createuser
+	-quantity
+	-comments
+	-phone
+	-status
+	+to_json()
+}
+
+
+
+class User{
+	-userID
+	-username
+	-password
+	-email
+	-phone
+	-usertype
+	-balance
+	-userstatus
+	+to_json()
+}
+
+class OrderController{
+	+queryMainorder()
+	+querySuborder()
+}
+
+class OrderInterface{
+	+queryMainorderEvent()
+	+querySuborderEvent()
+}
+
+class PurseController{
+	+topUp()
+	+withdraw()
+}
+
+class PurseInterface{
+	+topUpEvent()
+	+withdrawEvent()
+}
+
+class UserController{
+	+enroll()
+	+login()
+'TODO
+'不知道要不要钱包功能
+}
+
+class AdminController{
+'审核功能'
+	+changeUser()
+	+changeOrder()
+}
+
+class ProviderController{
+	+join()
+}
+
+class PurchaserController{
+	+apply()
+}
+
+
+
+class UserInterface{
+	+display()
+	+loginEvent()
+	+queryEvent()
+}
+
+class AdminInterface{
+	+changeUserEvent()
+	+changeOrderEvent()
+
+}
+
+class ProviderInterface{
+	+joinEvent()
+	+enrollEvent()
+}
+
+class PurchaserInterface{
+	+enrollEvent()
+	+applyEvent()
+}
+
+class Purse{
+	-balance
+}
+
+
+together {
+	class User
+	class MainOrder
+	class SubOrder
+}
+
+together {
+	class UserController
+	class AdminController
+	class ProviderController
+	class PurchaserController
+}
+
+UserInterface <|-- AdminInterface
+UserInterface <|-- ProviderInterface
+UserInterface <|-- PurchaserInterface
+
+UserController <|-- AdminController
+UserController <|-- ProviderController
+UserController <|-left- PurchaserController
+
+User <|-- Admin
+User <|-- Purchaser
+User <|-- Provider
+
+User "1" *.left. "1" Purse
+SubOrder "*" .left.> "1" MainOrder
+
+MainOrder -[hidden]down- User
+MainOrder -[hidden]down- UserController
+MainOrder -[hidden]down- UserInterface
+SubOrder -[hidden]down- User
+SubOrder -[hidden]down- UserController
+SubOrder -[hidden]down- UserInterface
+Provider -[hidden]down- UserInterface
+AdminController -[hidden]down- UserInterface
+MainOrder -[hidden]left- OrderController
+OrderController -[hidden]left- OrderInterface
+AdminInterface -[hidden]left- PurseController
+PurseController -[hidden]left- PurseInterface
+
+@enduml

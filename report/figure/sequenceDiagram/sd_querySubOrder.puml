@@ -1,0 +1,29 @@
+@startuml
+''' 省略底部
+	hide footbox 
+
+''' 定义类
+	actor User as act
+	boundary UserInterface as bou
+	control OrderController as con
+	database SubOrderList as db
+
+	autonumber
+	act -> bou : queryEvent()
+	activate bou
+
+	bou -> con : querySubOrder()
+	activate con
+
+	con -> db :  query()
+	activate db
+
+	db --> con : returnResult
+	deactivate db
+
+	con -> bou : queryResult()
+	deactivate con
+
+	bou -> bou : display()
+
+@enduml

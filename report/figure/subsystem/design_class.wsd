@@ -1,0 +1,36 @@
+@startuml
+left to right direction
+
+	actor user
+
+	boundary OrderInterface
+	boundary UserInterface
+	boundary PurseInterface
+
+	control OrderController
+	control UserController
+	control PurseController
+
+	entity MainOrder
+	entity SubOrder
+	entity User
+
+together {
+	user -- OrderInterface
+	user -- UserInterface
+	user -- PurseInterface
+}
+
+together {
+	OrderInterface -- OrderController
+	UserInterface -- UserController
+	PurseInterface -- PurseController
+}
+
+together {
+	OrderController -- MainOrder
+	OrderController -- SubOrder
+	UserController -- User
+	PurseController -- User
+}
+@enduml

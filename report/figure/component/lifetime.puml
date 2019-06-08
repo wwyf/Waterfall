@@ -1,0 +1,73 @@
+@startuml
+
+actor Provider1
+actor Provider2
+actor Customer1
+actor Customer2
+
+boundary Backend
+control OrderController
+
+database MainOrderList
+database SubOrderList
+
+activate Backend
+Provider1 -> Backend : << mainOrderQuery >>
+activate OrderController
+Backend -> OrderController : << createThread >>
+
+Provider2 -> Backend : << mainOrderQuery >>
+activate OrderController
+Backend -> OrderController : << createThread >>
+
+
+Customer1 -> Backend : << mainOrderQuery >>
+activate OrderController
+Backend -> OrderController : << createThread >>
+
+Customer2 -> Backend : << mainOrderQuery >>
+activate OrderController
+Backend -> OrderController : << createThread >>
+
+
+
+activate MainOrderList
+OrderController -> MainOrderList : << query >>
+activate MainOrderList
+OrderController -> MainOrderList : << query >>
+
+
+activate SubOrderList
+OrderController -> SubOrderList : << query >>
+activate SubOrderList
+OrderController -> SubOrderList : << query >>
+
+
+
+MainOrderList -> OrderController : << returnResult >>
+MainOrderList -> OrderController : << returnResult >>
+
+
+SubOrderList -> OrderController : << returnResult >>
+SubOrderList -> OrderController : << returnResult >>
+
+deactivate MainOrderList
+deactivate MainOrderList
+deactivate SubOrderList
+deactivate SubOrderList
+
+OrderController -> Backend : << returnResult >>
+OrderController -> Backend : << returnResult >>
+OrderController -> Backend : << returnResult >>
+OrderController -> Backend : << returnResult >>
+
+Backend -> Provider1 : << returnResultAndDestoryThread >>
+deactivate OrderController
+Backend -> Provider2 : << returnResultAndDestoryThread >>
+deactivate OrderController
+Backend -> Customer1 : << returnResultAndDestoryThread >>
+deactivate OrderController
+Backend -> Customer2 : << returnResultAndDestoryThread >>
+deactivate OrderController
+
+@enduml

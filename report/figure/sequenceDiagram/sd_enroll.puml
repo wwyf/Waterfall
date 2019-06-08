@@ -1,0 +1,29 @@
+@startuml
+''' 省略底部
+	hide footbox 
+
+''' 定义类
+	actor User as act
+	boundary ProviderInterface as bou
+	control ProviderController as con
+	database UserList as db
+
+	autonumber
+	act -> bou : enrollEvent()
+	activate bou
+
+	bou -> con : enroll()
+	activate con
+
+	con -> db : insert()
+	activate db
+
+	db --> con : returnResult
+	deactivate db
+
+	con --> bou : returnResult
+	deactivate con
+
+	bou -> bou : display()
+
+@enduml

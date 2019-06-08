@@ -1,0 +1,22 @@
+@startuml
+
+''' Layout
+start
+:输入用户名;
+if (用户名是否存在) then (否)
+    :输入密码;
+    if (密码不合法) then (是)
+        :显示密码不合法;
+    else (否)
+        :输入个人基本信息;
+        if (个人基本信息正确?) then (是)
+            :显示注册成功等待验证;
+        else (否)
+            :显示个人基本信息不合法原因;
+        endif
+    endif
+else (是)
+    :显示用户名已经存在;
+endif
+stop
+@enduml

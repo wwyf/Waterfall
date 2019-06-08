@@ -1,0 +1,21 @@
+@startuml
+left to right direction
+
+package UserSystem{
+	package View{
+		boundary  UserInterface
+	}
+
+	package Control{
+		control  UserController
+	}
+
+	package Model{
+		entity  User
+	}
+
+	UserInterface -- UserController
+	UserController -- User
+}
+
+@enduml

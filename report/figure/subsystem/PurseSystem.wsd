@@ -1,0 +1,21 @@
+@startuml
+left to right direction
+
+package UserSystem{
+	package View{
+		boundary  PurseInterface
+	}
+
+	package Control{
+		control  PurseController
+	}
+
+	package Model{
+		entity  User
+	}
+
+	PurseInterface -- PurseController
+	PurseController -- User
+}
+
+@enduml

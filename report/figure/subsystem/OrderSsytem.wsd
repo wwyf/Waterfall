@@ -1,0 +1,23 @@
+@startuml
+left to right direction
+
+package OrderSystem{
+	package View{
+		boundary  OrderInterface
+	}
+
+	package Control{
+		control  OrderController
+	}
+
+	package Model{
+		entity  MainOrder
+		entity	SubOrder
+	}
+
+	OrderInterface -- OrderController
+	OrderController -- MainOrder
+	OrderController -- SubOrder
+}
+
+@enduml

@@ -1,0 +1,18 @@
+@startuml
+
+component [<<process>>\nOrderSystem_1] as U
+component [<<process>>\nOrderSystem_2] as U1
+component [<<process>>\nOrderSystem_3] as U2
+component [<<process>>\nbackend] as P
+component [<<thread>>\nMainOrderQuery_1] as t1
+component [<<thread>>\nMainOrderQuery_2] as t2
+component [<<thread>>\nMainOrderQuery_3] as t3
+
+U ..> P
+U1 ..> P
+U2 ..> P
+P ..> t1
+P ..> t2
+P ..> t3
+
+@enduml

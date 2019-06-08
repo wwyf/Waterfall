@@ -1,0 +1,47 @@
+@startuml
+
+''' 布局信息
+left to right direction
+
+''' 以下部分描述了各个角色
+:微供应商: as MiniProvider
+:订购商: as Client
+:管理员: as Admin
+' :授信系统: as CreditSys
+' :资金系统: as FundSys
+
+''' 以下部分描述了各个用例
+''' 注意由于使用了从左到右布局, 故连线方向up down等需旋转90度
+
+MiniProvider -up- (用户登录)
+MiniProvider -up- (用户注册)
+MiniProvider -up- (查看子订单)
+MiniProvider -up- (加入母订单)
+MiniProvider -up- (查看子订单)
+MiniProvider -up- (钱包充值)
+MiniProvider -up- (余额提现)
+
+together {
+	Admin -- (修改用户信息)
+	Admin -- (母订单管理)
+	Admin -- (子订单管理)
+	Admin -- (用户管理)
+	Admin -- (订单管理)
+    Admin -- (用户登录)
+    Admin -- (查看子订单)
+    Admin -- (查看母订单)
+    Admin -- (审核新用户)
+    Admin  -- (查看子订单)
+}
+
+Client -- (用户登录)
+Client -- (用户注册)
+Client -- (发布母订单)
+Client -- (查看母订单)
+Client -- (钱包充值)
+Client -- (余额提现)
+Client -- (查看子订单)
+
+''' 用于控制布局的连线, 不显示
+
+@enduml

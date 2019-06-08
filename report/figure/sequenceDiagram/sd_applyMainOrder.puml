@@ -1,0 +1,29 @@
+@startuml
+''' 省略底部
+	hide footbox 
+
+''' 定义类
+	actor Purchaser as act
+	boundary PurchaserInterface as bou
+	control PurchaserController as con
+	database MainOrderList as db
+
+	autonumber
+	act -> bou : applyEvent()
+	activate bou
+
+	bou -> con : apply()
+	activate con
+
+	con -> db : insert()
+	activate db
+
+	db -> con : returnResult
+	deactivate db
+
+	con --> bou : returnResult
+	deactivate con
+	
+	bou -> bou : display()
+
+@enduml
