@@ -1,5 +1,10 @@
 version: "3"
 services:
+
+  frontend:
+    image: wwyf/waterfall-frontend:v1.1
+    ports:
+      - 80
   mysql:
     image: mysql
     command: --default-authentication-plugin=mysql_native_password
@@ -16,7 +21,5 @@ services:
     image: wwyf/waterfall-backend:v1.4
     volumes:
       - ./sql_config.json:/app/src/db/sql_config.json
-    ports:
-      - 5000
     depends_on:
-      - mysql
+      - mysql             
