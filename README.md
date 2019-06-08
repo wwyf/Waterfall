@@ -2,6 +2,12 @@
 
 "鲜天下" 平台
 
+
+## Prerequisite
+
+- `docker : >= 18.09.6`
+- `docker-compose : >= 1.8`
+
 ## How to deploy
 
 You can deploy the frontend, the backend and the database with just three command. 
